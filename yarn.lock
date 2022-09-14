@@ -2602,6 +2602,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zcloak/login-providers@workspace:packages/login-providers":
+  version: 0.0.0-use.local
+  resolution: "@zcloak/login-providers@workspace:packages/login-providers"
+  languageName: unknown
+  linkType: soft
+
+"@zcloak/login-rpc@workspace:packages/login-rpc":
+  version: 0.0.0-use.local
+  resolution: "@zcloak/login-rpc@workspace:packages/login-rpc"
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
