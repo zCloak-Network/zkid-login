@@ -5,7 +5,12 @@
     "noUnusedLocals": false,
     "composite": false,
     "jsx": "react-jsx",
-    "paths": {},
+    "paths": {
+      "@zcloak/login-providers": ["login-providers/src"],
+      "@zcloak/login-providers/*": ["login-providers/src/*"],
+      "@zcloak/login-rpc": ["login-rpc/src"],
+      "@zcloak/login-rpc/*": ["login-rpc/src/*"],
+    },
     "skipLibCheck": true
   }
 }
