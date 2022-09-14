@@ -17,6 +17,6 @@
   "version": "0.0.0",
   "main": "index.js",
   "dependencies": {
-    "@kiltprotocol/types": "^0.28.2"
+    "@kiltprotocol/types": "^0.28.0"
   }
 }

@@ -1823,7 +1823,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kiltprotocol/types@npm:^0.28.2":
+"@kiltprotocol/types@npm:^0.28.0":
   version: 0.28.2
   resolution: "@kiltprotocol/types@npm:0.28.2"
   dependencies:
@@ -3113,7 +3113,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc@workspace:packages/rpc"
   dependencies:
-    "@kiltprotocol/types": ^0.28.2
+    "@kiltprotocol/types": ^0.28.0
   languageName: unknown
   linkType: soft
 
