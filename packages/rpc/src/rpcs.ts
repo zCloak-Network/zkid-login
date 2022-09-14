@@ -1,15 +1,17 @@
 import type { DidSignature, DidUri, ICredential } from '@kiltprotocol/types';
 
-// [RpcMethod]: [Params, Returns]
+// [RpcMethod]: [Params, Returns | Subsciption]
 export interface Rpcs {
   wallet_requestAuth: [undefined, boolean];
   wallet_isAuth: [undefined, boolean];
+  wallet_isLocked: [undefined, boolean];
   did_getCurrent: [undefined, DidInfo];
   did_requestCredentialDigest: [RequestCredentialDigestParams, RequestCredentialDigestReponse];
   did_requestCredentialContent: [RequestCredentialContentParams, RequestCredentialContentReponse];
   did_sign: [DidSignParams, DidSignResponse];
   did_encrypt: [DidEncryptParams, DidEncryptResponse];
   did_decrypt: [DidDecryptParams, DidDecryptResponse];
+  rpc_unsub: [RpcUnsubParams, boolean];
 }
 
 type HexString = `0x${string}`;
@@ -65,3 +67,8 @@ export type DidDecryptParams = {
   payload: HexString;
 };
 export type DidDecryptResponse = HexString;
+
+export type RpcUnsubParams = {
+  method: keyof Rpcs;
+  subscriptionId: number | string;
+};
