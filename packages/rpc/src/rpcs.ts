@@ -61,6 +61,7 @@ export type RequestCredentialDigestReponse = {
 // method did_requestCredentialContent params
 export type RequestCredentialContentParams = {
   challenge: string;
+  contentKeys?: string[];
   ctypehash?: HexString;
   attester?: DidUri;
 };
