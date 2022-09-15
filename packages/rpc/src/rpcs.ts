@@ -19,9 +19,12 @@ export interface RequestRpcs {
 export interface SubscriptionRpcs {
   // subscription lock status in wallet
   wallet_subLocked: [undefined, boolean];
+  // subscription lock status in wallet
+  wallet_unsubLocked: [undefined, boolean];
   // subscript did when wallet internal did changed
   did_subCurrent: [undefined, DidInfo];
-  rpc_unsub: [RpcUnsubParams, boolean];
+  // subscript did when wallet internal did changed
+  did_unsubCurrent: [undefined, DidInfo];
 }
 
 export type Rpcs = RequestRpcs & SubscriptionRpcs;
