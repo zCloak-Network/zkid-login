@@ -8,9 +8,9 @@ export abstract class Request {
     params: RequestRpcs[Method][0]
   ): Promise<RequestRpcs[Method][1]>;
 
-  public abstract subscribe<Method extends SubscriptionMethods>(
+  public abstract request<Method extends SubscriptionMethods>(
     method: Method,
     params: SubscriptionRpcs[Method][0],
-    cb: (result: SubscriptionRpcs[Method][1]) => void
-  ): Unsub;
+    subscriber: (data: SubscriptionRpcs[Method][2]) => void
+  ): Promise<SubscriptionRpcs[Method][1]>;
 }
