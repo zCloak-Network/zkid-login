@@ -6,10 +6,12 @@
     "composite": false,
     "jsx": "react-jsx",
     "paths": {
-      "@zcloak/login-providers": ["login-providers/src"],
-      "@zcloak/login-providers/*": ["login-providers/src/*"],
-      "@zcloak/login-rpc": ["login-rpc/src"],
-      "@zcloak/login-rpc/*": ["login-rpc/src/*"],
+      "example": ["example/src"],
+      "example/*": ["example/src/*"],
+      "@zcloak/login-providers": ["providers/src"],
+      "@zcloak/login-providers/*": ["providers/src/*"],
+      "@zcloak/login-rpc": ["rpc/src"],
+      "@zcloak/login-rpc/*": ["rpc/src/*"],
     },
     "skipLibCheck": true
   }
