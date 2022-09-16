@@ -4,12 +4,15 @@ on:
     branches:
       - master
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   master:
     if: "! startsWith(github.event.head_commit.message, '[CI Skip]')"
-    strategy:
-      matrix:
-        step: ['build:release']
     name: ${{ matrix.step }}
     runs-on: ubuntu-latest
     env:
@@ -18,11 +21,27 @@ jobs:
       GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GH_PAT }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         token: ${{ secrets.GH_PAT }}
-    - name: ${{ matrix.step }}
+
+    - name: install deps
       run: |
         yarn install --immutable | grep -v 'YN0013'
-        yarn ${{ matrix.step }}
+
+    - name: build:release
+      run: |
+        yarn build:release
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v1
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: packages/example/build
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
