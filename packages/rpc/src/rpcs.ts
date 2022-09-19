@@ -33,7 +33,7 @@ export type RequestMethods = keyof RequestRpcs;
 export type SubscriptionMethods = keyof SubscriptionRpcs;
 export type Methods = RequestMethods | SubscriptionMethods;
 
-type HexString = `0x${string}`;
+export type HexString = `0x${string}`;
 
 export type DidInfo = {
   didUri: DidUri;
