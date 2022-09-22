@@ -2,7 +2,7 @@ import type { ProviderEvents } from '../types';
 
 import EventEmitter from 'eventemitter3';
 
-export class Events {
+export abstract class Events {
   #eventemitter = new EventEmitter();
 
   protected emit(type: ProviderEvents, ...args: unknown[]): boolean {

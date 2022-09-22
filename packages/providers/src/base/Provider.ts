@@ -12,27 +12,27 @@ import { isHex, isString, isU8a, numberToHex, stringToHex, u8aToHex } from '@pol
 import { Events } from './Events';
 
 export abstract class BaseProvider extends Events {
-  #request: Request;
+  protected request: Request;
 
   constructor(request: Request) {
     super();
-    this.#request = request;
+    this.request = request;
   }
 
   public requestAuth(): Promise<boolean> {
-    return this.#request.request('wallet_requestAuth', undefined);
+    return this.request('wallet_requestAuth', undefined);
   }
 
   public isAuth(): Promise<boolean> {
-    return this.#request.request('wallet_isAuth', undefined);
+    return this.request('wallet_isAuth', undefined);
   }
 
   public isLocked(): Promise<boolean> {
-    return this.#request.request('wallet_isLocked', undefined);
+    return this.request('wallet_isLocked', undefined);
   }
 
   public getCurrentDid(): Promise<DidInfo> {
-    return this.#request.request('did_getCurrent', undefined);
+    return this.request('did_getCurrent', undefined);
   }
 
   public requestCredentialDigest(
@@ -40,7 +40,7 @@ export abstract class BaseProvider extends Events {
     ctypehash?: HexString,
     attester?: DidUri
   ): Promise<RequestCredentialDigestReponse> {
-    return this.#request.request('did_requestCredentialDigest', { challenge, ctypehash, attester });
+    return this.request('did_requestCredentialDigest', { challenge, ctypehash, attester });
   }
 
   public requestCredentialContent(
@@ -49,7 +49,7 @@ export abstract class BaseProvider extends Events {
     ctypehash?: HexString,
     attester?: DidUri
   ): Promise<RequestCredentialContentReponse> {
-    return this.#request.request('did_requestCredentialContent', {
+    return this.request('did_requestCredentialContent', {
       challenge,
       contentKeys,
       ctypehash,
@@ -66,7 +66,7 @@ export abstract class BaseProvider extends Events {
       ? stringToHex(data)
       : numberToHex(data);
 
-    return this.#request.request('did_sign', { payload });
+    return this.request('did_sign', { payload });
   }
 
   public encrypt(
@@ -82,7 +82,7 @@ export abstract class BaseProvider extends Events {
       : numberToHex(data);
     const peerPublicKey: HexString = isHex(peer) ? peer : u8aToHex(peer);
 
-    return this.#request.request('did_encrypt', { payload, peerPublicKey });
+    return this.request('did_encrypt', { payload, peerPublicKey });
   }
 
   public decrypt(
@@ -98,6 +98,6 @@ export abstract class BaseProvider extends Events {
       : numberToHex(data);
     const peerPublicKey: HexString = isHex(peer) ? peer : u8aToHex(peer);
 
-    return this.#request.request('did_decrypt', { payload, peerPublicKey });
+    return this.request('did_decrypt', { payload, peerPublicKey });
   }
 }
