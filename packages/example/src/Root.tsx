@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { Request } from '@zcloak/login-rpc';
 
-const request: Request = (window as any).zkid.request;
+const request: { request: Request } = (window as any).zkid.request;
 
 function Root() {
   const [enabled, setEnabled] = useState(false);
@@ -23,7 +23,7 @@ function Root() {
   const [credential, setCredential] = useState<RequestCredentialContentReponse>();
 
   useEffect(() => {
-    request('wallet_isAuth', undefined).then((res) => setEnabled(res));
+    request.request('wallet_isAuth', undefined).then((res) => setEnabled(res));
   }, []);
 
   const attester = useMemo(
@@ -40,7 +40,7 @@ function Root() {
       <Stack direction="row" spacing={2}>
         <Button
           onClick={() => {
-            request('wallet_requestAuth', undefined).then(setEnabled);
+            request.request('wallet_requestAuth', undefined).then(setEnabled);
           }}
           variant="contained"
         >
@@ -48,7 +48,7 @@ function Root() {
         </Button>
         <Button
           onClick={() => {
-            request('did_getCurrent', undefined).then(setDid);
+            request.request('did_getCurrent', undefined).then(setDid);
           }}
           variant="contained"
         >
@@ -56,8 +56,9 @@ function Root() {
         </Button>
         <Button
           onClick={() => {
-            request('did_sign', {
-              payload: stringToHex(`${window.location.host} wants you to sign in with your did:
+            request
+              .request('did_sign', {
+                payload: stringToHex(`${window.location.host} wants you to sign in with your did:
 ${did?.didUri}
 
 I accept the ServiceOrg Terms of Service: ${window.location.host}
@@ -65,7 +66,8 @@ I accept the ServiceOrg Terms of Service: ${window.location.host}
 URI: ${window.location.href}
 Nonce: ${randomAsHex()}
 Issued At: ${new Date().toString()})`)
-            }).then(setSignature);
+              })
+              .then(setSignature);
           }}
           variant="contained"
         >
@@ -73,9 +75,11 @@ Issued At: ${new Date().toString()})`)
         </Button>
         <Button
           onClick={() => {
-            request('did_requestCredentialDigest', {
-              challenge: `${randomAsHex}-${Date.now()}`
-            }).then(setCredentialDigest);
+            request
+              .request('did_requestCredentialDigest', {
+                challenge: `${randomAsHex}-${Date.now()}`
+              })
+              .then(setCredentialDigest);
           }}
           variant="contained"
         >
@@ -83,9 +87,11 @@ Issued At: ${new Date().toString()})`)
         </Button>
         <Button
           onClick={() => {
-            request('did_requestCredentialContent', {
-              challenge: `${randomAsHex}-${Date.now()}`
-            }).then(setCredential);
+            request
+              .request('did_requestCredentialContent', {
+                challenge: `${randomAsHex}-${Date.now()}`
+              })
+              .then(setCredential);
           }}
           variant="contained"
         >
