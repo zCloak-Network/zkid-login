@@ -15,25 +15,9 @@ export interface RequestRpcs {
   did_decrypt: [DidDecryptParams, DidDecryptResponse];
 }
 
-// [RpcSubscriptionMethod]: [Params, Subsciption]
-export interface SubscriptionRpcs {
-  // subscription lock status in wallet
-  wallet_subLocked: [undefined, string, boolean];
-  // subscription lock status in wallet
-  wallet_unsubLocked: [UnsubParams, boolean];
-  // subscript did when wallet internal did changed
-  did_subCurrent: [undefined, string, DidInfo];
-  // subscript did when wallet internal did changed
-  did_unsubCurrent: [UnsubParams, DidInfo];
-}
-
-export type Rpcs = RequestRpcs & SubscriptionRpcs;
-
 export type RequestMethods = keyof RequestRpcs;
-export type SubscriptionMethods = keyof SubscriptionRpcs;
-export type Methods = RequestMethods | SubscriptionMethods;
 
-type HexString = `0x${string}`;
+export type HexString = `0x${string}`;
 
 export type DidInfo = {
   didUri: DidUri;
@@ -87,7 +71,3 @@ export type DidDecryptParams = {
   payload: HexString;
 };
 export type DidDecryptResponse = HexString;
-
-export type UnsubParams = {
-  subscriptionId: number;
-};
