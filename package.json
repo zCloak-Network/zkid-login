@@ -27,11 +27,10 @@
     "test:watch": "zcloak-dev-run-test --watch"
   },
   "resolutions": {
-    "babel-core": "^7.19.0",
     "typescript": "^4.8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.0",
+    "@babel/core": "^7.19.1",
     "@babel/register": "^7.18.9",
     "@babel/runtime": "^7.19.0",
     "@types/jest": "^27.4.0",
