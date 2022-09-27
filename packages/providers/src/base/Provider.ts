@@ -57,6 +57,18 @@ export abstract class BaseProvider extends Events {
     });
   }
 
+  public didLogin(data: HexString | Uint8Array | string | number): Promise<HexString> {
+    const payload: HexString = isHex(data)
+      ? data
+      : isU8a(data)
+      ? u8aToHex(data)
+      : isString(data)
+      ? stringToHex(data)
+      : numberToHex(data);
+
+    return this.request('did_login', { payload });
+  }
+
   public sign(data: HexString | Uint8Array | string | number): Promise<HexString> {
     const payload: HexString = isHex(data)
       ? data

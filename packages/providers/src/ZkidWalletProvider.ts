@@ -2,8 +2,9 @@ import type { Request } from '@zcloak/login-rpc';
 
 import { BaseProvider } from './base/Provider';
 
-const zkid: { request: Request; on: (eventName?: string, ...args: any[]) => void } = (window as any)
-  ?.zkid;
+const zkid: { request: Request; on?: (eventName?: string, ...args: any[]) => void } = (
+  window as any
+)?.zkid;
 
 export class ZkidWalletProvider extends BaseProvider {
   constructor() {
@@ -11,9 +12,9 @@ export class ZkidWalletProvider extends BaseProvider {
 
     super(zkid.request);
 
-    zkid.on('did_changed', this.#didChanged);
-    zkid.on('lock', this.#lock);
-    zkid.on('unlock', this.#unlock);
+    zkid.on?.('did_changed', this.#didChanged);
+    zkid.on?.('lock', this.#lock);
+    zkid.on?.('unlock', this.#unlock);
   }
 
   #didChanged = (...args: any[]) => {

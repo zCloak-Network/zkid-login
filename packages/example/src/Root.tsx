@@ -7,13 +7,27 @@ import type {
 
 import { Check, LockSharp } from '@mui/icons-material';
 import { Button, Stack, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
-import { stringToHex } from '@polkadot/util';
 import { randomAsHex } from '@polkadot/util-crypto';
 import { useEffect, useMemo, useState } from 'react';
 
-import { Request } from '@zcloak/login-rpc';
+import { ZkidWalletProvider } from '@zcloak/login-providers';
 
-const request: Request = (window as any).zkid.request;
+// // init zkid wallet provider, make sure zkid wallet is install
+// const provider = new ZkidWalletProvider();
+
+// // is trust app
+// provider.isAuth()
+// // Trust app
+// provider.requestAuth()
+
+// // login with did
+// provider.didLogin(`${challengeString}`)
+
+// // login with credential digest
+// provider.requestCredentialDigest(`${challengeString}`, ctypehash, attester)
+
+// // login with credential content
+// provider.requestCredentialContent(`${challengeString}`, contentKeys, ctypehash, attester)
 
 function Root() {
   const [enabled, setEnabled] = useState(false);
@@ -23,7 +37,7 @@ function Root() {
   const [credential, setCredential] = useState<RequestCredentialContentReponse>();
 
   useEffect(() => {
-    request('wallet_isAuth', undefined).then((res) => setEnabled(res));
+    provider.isAuth().then((res) => setEnabled(res));
   }, []);
 
   const attester = useMemo(
@@ -40,7 +54,7 @@ function Root() {
       <Stack direction="row" spacing={2}>
         <Button
           onClick={() => {
-            request('wallet_requestAuth', undefined).then(setEnabled);
+            provider.requestAuth().then(setEnabled);
           }}
           variant="contained"
         >
@@ -48,7 +62,7 @@ function Root() {
         </Button>
         <Button
           onClick={() => {
-            request('did_getCurrent', undefined).then(setDid);
+            provider.getCurrentDid().then(setDid);
           }}
           variant="contained"
         >
@@ -56,16 +70,18 @@ function Root() {
         </Button>
         <Button
           onClick={() => {
-            request('did_sign', {
-              payload: stringToHex(`${window.location.host} wants you to sign in with your did:
+            provider
+              .sign(
+                `${window.location.host} wants you to sign in with your did:
 ${did?.didUri}
 
 I accept the ServiceOrg Terms of Service: ${window.location.host}
 
 URI: ${window.location.href}
 Nonce: ${randomAsHex()}
-Issued At: ${new Date().toString()})`)
-            }).then(setSignature);
+Issued At: ${new Date().toString()})`
+              )
+              .then(setSignature);
           }}
           variant="contained"
         >
@@ -73,9 +89,9 @@ Issued At: ${new Date().toString()})`)
         </Button>
         <Button
           onClick={() => {
-            request('did_requestCredentialDigest', {
-              challenge: `${randomAsHex}-${Date.now()}`
-            }).then(setCredentialDigest);
+            const challenge = `${randomAsHex}-${Date.now()}`;
+
+            provider.requestCredentialDigest(challenge).then(setCredentialDigest);
           }}
           variant="contained"
         >
@@ -83,9 +99,9 @@ Issued At: ${new Date().toString()})`)
         </Button>
         <Button
           onClick={() => {
-            request('did_requestCredentialContent', {
-              challenge: `${randomAsHex}-${Date.now()}`
-            }).then(setCredential);
+            const challenge = `${randomAsHex}-${Date.now()}`;
+
+            provider.requestCredentialContent(challenge).then(setCredential);
           }}
           variant="contained"
         >
