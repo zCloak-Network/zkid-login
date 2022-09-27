@@ -11,23 +11,14 @@ import { randomAsHex } from '@polkadot/util-crypto';
 import { useEffect, useMemo, useState } from 'react';
 
 import { ZkidWalletProvider } from '@zcloak/login-providers';
+import {
+  verifyCredentialContent,
+  verifyCredentialDigest,
+  verifyDidLogin
+} from '@zcloak/login-verify';
 
-// // init zkid wallet provider, make sure zkid wallet is install
-// const provider = new ZkidWalletProvider();
-
-// // is trust app
-// provider.isAuth()
-// // Trust app
-// provider.requestAuth()
-
-// // login with did
-// provider.didLogin(`${challengeString}`)
-
-// // login with credential digest
-// provider.requestCredentialDigest(`${challengeString}`, ctypehash, attester)
-
-// // login with credential content
-// provider.requestCredentialContent(`${challengeString}`, contentKeys, ctypehash, attester)
+// init zkid wallet provider, make sure zkid wallet is install
+const provider = new ZkidWalletProvider();
 
 function Root() {
   const [enabled, setEnabled] = useState(false);
@@ -70,18 +61,26 @@ function Root() {
         </Button>
         <Button
           onClick={() => {
-            provider
-              .sign(
-                `${window.location.host} wants you to sign in with your did:
+            const message = `${window.location.host} wants you to sign in with your did:
 ${did?.didUri}
 
 I accept the ServiceOrg Terms of Service: ${window.location.host}
 
 URI: ${window.location.href}
 Nonce: ${randomAsHex()}
-Issued At: ${new Date().toString()})`
-              )
-              .then(setSignature);
+Issued At: ${new Date().toString()})`;
+
+            provider
+              .sign(message)
+              .then((signature) => {
+                if (did) {
+                  console.log(verifyDidLogin(message, signature, did.authenticationKey));
+                }
+
+                return signature;
+              })
+              .then(setSignature)
+              .catch(console.error);
           }}
           variant="contained"
         >
@@ -91,7 +90,16 @@ Issued At: ${new Date().toString()})`
           onClick={() => {
             const challenge = `${randomAsHex}-${Date.now()}`;
 
-            provider.requestCredentialDigest(challenge).then(setCredentialDigest);
+            provider
+              .requestCredentialDigest(challenge)
+              .then((credentialDigest) => {
+                if (did) {
+                  verifyCredentialDigest(credentialDigest, challenge, did.didUri).then(console.log);
+                }
+
+                return credentialDigest;
+              })
+              .then(setCredentialDigest);
           }}
           variant="contained"
         >
@@ -101,7 +109,16 @@ Issued At: ${new Date().toString()})`
           onClick={() => {
             const challenge = `${randomAsHex}-${Date.now()}`;
 
-            provider.requestCredentialContent(challenge).then(setCredential);
+            provider
+              .requestCredentialContent(challenge, ['name', 'age'])
+              .then((credential) => {
+                if (did) {
+                  verifyCredentialContent(credential, challenge, did.didUri).then(console.log);
+                }
+
+                return credential;
+              })
+              .then(setCredential);
           }}
           variant="contained"
         >
