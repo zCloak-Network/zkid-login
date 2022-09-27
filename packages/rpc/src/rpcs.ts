@@ -10,6 +10,7 @@ export interface RequestRpcs {
   did_getCurrent: [undefined, DidInfo];
   did_requestCredentialDigest: [RequestCredentialDigestParams, RequestCredentialDigestReponse];
   did_requestCredentialContent: [RequestCredentialContentParams, RequestCredentialContentReponse];
+  did_login: [DidLoginParams, DidLoginResponse];
   did_sign: [DidSignParams, DidSignResponse];
   did_encrypt: [DidEncryptParams, DidEncryptResponse];
   did_decrypt: [DidDecryptParams, DidDecryptResponse];
@@ -23,8 +24,8 @@ export type DidInfo = {
   didUri: DidUri;
   authenticationKey: HexString;
   encryptionKey: HexString[];
-  attestationKey: HexString;
-  delegationKey: HexString;
+  attestationKey?: HexString;
+  delegationKey?: HexString;
 };
 
 // method did_requestCredentialDigest params
@@ -54,6 +55,11 @@ export type RequestCredentialContentParams = {
 };
 // method did_requestCredentialContent returns
 export type RequestCredentialContentReponse = ICredential;
+
+export type DidLoginParams = {
+  payload: HexString;
+};
+export type DidLoginResponse = HexString;
 
 export type DidSignParams = {
   payload: HexString;

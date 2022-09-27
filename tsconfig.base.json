@@ -8,6 +8,8 @@
     "paths": {
       "example": ["example/src"],
       "example/*": ["example/src/*"],
+      "@zcloak/login-verify": ["verify/src"],
+      "@zcloak/login-verify/*": ["verify/src/*"],
       "@zcloak/login-providers": ["providers/src"],
       "@zcloak/login-providers/*": ["providers/src/*"],
       "@zcloak/login-rpc": ["rpc/src"],
