@@ -19,22 +19,45 @@ export abstract class BaseProvider extends Events {
     this.request = request;
   }
 
+  /**
+   * Send request for auth.
+   * @returns `Promise<boolean>`
+   */
   public requestAuth(): Promise<boolean> {
     return this.request('wallet_requestAuth', undefined);
   }
 
+  /**
+   * Get if authed
+   * @returns `Promise<boolean>`
+   */
   public isAuth(): Promise<boolean> {
     return this.request('wallet_isAuth', undefined);
   }
 
+  /**
+   * Get the walelt is locked
+   * @returns `Promise<boolean>`
+   */
   public isLocked(): Promise<boolean> {
     return this.request('wallet_isLocked', undefined);
   }
 
+  /**
+   * Get current selected in wallet.
+   * @returns `DidInfo` object.
+   */
   public getCurrentDid(): Promise<DidInfo> {
     return this.request('did_getCurrent', undefined);
   }
 
+  /**
+   * request credential digest(login with credential digest).
+   * @param challenge a random string
+   * @param ctypehash the ctypehash of credential, if passed, wallet will only return the same credential with `ctypehash`
+   * @param attester the attester of credential, if passed, wallet will only return the attested credential by `attester`
+   * @returns `RequestCredentialDigestReponse`
+   */
   public requestCredentialDigest(
     challenge: string,
     ctypehash?: HexString,

@@ -1,3 +1,3 @@
 # @zcloak/login-rpc
 
-This project define rpc for zkid-login protocol.
+This project defined rpc for zkid-login protocol.

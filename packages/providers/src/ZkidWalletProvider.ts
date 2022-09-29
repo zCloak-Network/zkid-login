@@ -7,6 +7,10 @@ const zkid: { request: Request; on?: (eventName?: string, ...args: any[]) => voi
 )?.zkid;
 
 export class ZkidWalletProvider extends BaseProvider {
+  public static isInstalled(): boolean {
+    return !!(window as any).zkid;
+  }
+
   constructor() {
     if (!zkid) throw new Error('Zkid Wallet not install');
 
