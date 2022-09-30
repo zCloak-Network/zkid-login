@@ -23,3 +23,10 @@ export const ctype = CType.fromSchema(
   'did:kilt:4osqyMJEMTWL75V5JkVqJWWzxkY8UC5y4aRMweRaGQjcZhfQ'
 );
 export const attester: DidUri = 'did:kilt:4osqyMJEMTWL75V5JkVqJWWzxkY8UC5y4aRMweRaGQjcZhfQ';
+
+export const zkidWalletLink =
+  'https://chrome.google.com/webstore/detail/zcloak-id-wallet/hkdbehojhcibpbcdpjphajfbgigldjkh';
+
+export const docLink = 'https://docs.zkid.app';
+
+export const githubLink = 'https://github.com/zCloak-Network/zkid-login';

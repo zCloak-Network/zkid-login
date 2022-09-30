@@ -13,7 +13,7 @@ import React, { createContext, useCallback, useEffect, useMemo, useState } from 
 import { ZkidWalletProvider } from '@zcloak/login-providers';
 import { BaseProvider } from '@zcloak/login-providers/base/Provider';
 
-import { attester, ctype } from '../defaults';
+import { attester, ctype, zkidWalletLink } from '../defaults';
 
 const ErrorContainer = styled.div`
   z-index: 999;
@@ -171,15 +171,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       {!provider && showError && (
         <ErrorContainer>
           <p>You have not installed zkID Wallet.</p>
-          <button
-            onClick={() =>
-              window.open(
-                'https://chrome.google.com/webstore/detail/zcloak-id-wallet/hkdbehojhcibpbcdpjphajfbgigldjkh'
-              )
-            }
-          >
-            Download
-          </button>
+          <button onClick={() => window.open(zkidWalletLink)}>Download</button>
           <button
             onClick={() => setShowError(false)}
             style={{

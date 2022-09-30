@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 import Connect from './Connect';
+import Hero from './Hero';
 import Logins from './Logins';
 
-const Wrapper = styled.div`
+const Container = styled.div`
   width: 1160px;
   margin: 0 auto;
   padding: 100px 0;
@@ -11,10 +12,13 @@ const Wrapper = styled.div`
 
 function Home() {
   return (
-    <Wrapper>
-      <Connect />
-      <Logins />
-    </Wrapper>
+    <>
+      <Hero />
+      <Container>
+        <Connect />
+        <Logins />
+      </Container>
+    </>
   );
 }
 
