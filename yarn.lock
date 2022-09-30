@@ -4178,12 +4178,12 @@ __metadata:
   dependencies:
     "@kiltprotocol/types": ^0.28.0
     "@polkadot/util": ^10.1.9
-    "@zcloak/login-rpc": 0.1.0
+    "@zcloak/login-rpc": 0.1.1
     eventemitter3: ^4.0.7
   languageName: unknown
   linkType: soft
 
-"@zcloak/login-rpc@0.1.0, @zcloak/login-rpc@workspace:packages/rpc":
+"@zcloak/login-rpc@0.1.1, @zcloak/login-rpc@workspace:packages/rpc":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc@workspace:packages/rpc"
   dependencies:
@@ -4199,7 +4199,7 @@ __metadata:
     "@kiltprotocol/types": ^0.28.0
     "@polkadot/util": ^10.1.9
     "@polkadot/util-crypto": ^10.1.9
-    "@zcloak/login-rpc": 0.1.0
+    "@zcloak/login-rpc": 0.1.1
   languageName: unknown
   linkType: soft
 
