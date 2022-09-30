@@ -5,7 +5,7 @@
 
 # zkid-login
 
-This library exposes methods for dapps to interact with wallets for @zcloak/login, provides providers and verify.
+This library exposes methods for dapps to interact with wallets for @zcloak/login, provides providers and verify .For complete documentation around the verify, providers and their use, visit the [documentation portal](https://docs.zkid.app/).
 
 ## overview
 
