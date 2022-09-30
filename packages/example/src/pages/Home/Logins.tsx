@@ -180,7 +180,7 @@ function Logins() {
       <Wrapper>
         <Container<RequestCredentialContentReponse>
           codes={[
-            'provider.requestCredentialContent',
+            "provider.requestCredentialContent(challenge,['Name', 'Birthday', 'Level'], ctypehash, attester)",
             'verifyCredentialContent(data, challenge, did.didUri)'
           ]}
           desc="Let’s vote on some proposals, only those whose member level>2 can vote."
