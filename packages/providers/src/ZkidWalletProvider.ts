@@ -1,4 +1,4 @@
-import type { Request } from '@zcloak/login-rpc';
+import type { HexString, Request } from '@zcloak/login-rpc';
 
 import { BaseProvider } from './base/Provider';
 
@@ -32,4 +32,8 @@ export class ZkidWalletProvider extends BaseProvider {
   #unlock = () => {
     this.emit('unlock');
   };
+
+  importCredential(data: HexString) {
+    return zkid.request('credential_import' as any, { credential: data });
+  }
 }

@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  websites:
     if: "! startsWith(github.event.head_commit.message, '[CI Skip]')"
     runs-on: ubuntu-latest
     environment:
