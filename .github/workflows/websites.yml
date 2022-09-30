@@ -47,7 +47,7 @@ jobs:
           host: ${{ secrets.HOST }}
           port: 22
           key: ${{ secrets.KEY }}
-          source: ${{ github.workspace }}/packages/app/build
+          source: ${{ github.workspace }}/packages/example/build
           target: "/home/ubuntu/login-interface"
           strip_components: 5
           rm: true
