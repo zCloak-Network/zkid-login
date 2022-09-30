@@ -16,7 +16,7 @@ module.exports = merge(baseConfig(__dirname, 'development'), {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Example',
+      title: 'zkID Login',
       inject: true,
       template: path.join(__dirname, 'src/index.html')
     }),

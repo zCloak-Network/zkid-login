@@ -10,7 +10,7 @@ module.exports = merge(baseConfig(context), {
   devtool: process.env.BUILD_ANALYZE ? 'source-map' : false,
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Example',
+      title: 'zkID Login',
       inject: true,
       template: path.join(context, 'src/index.html')
     })

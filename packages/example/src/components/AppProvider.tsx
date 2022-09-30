@@ -6,6 +6,7 @@ import type {
   RequestCredentialDigestReponse
 } from '@zcloak/login-rpc';
 
+import styled from '@emotion/styled';
 import { init } from '@kiltprotocol/core';
 import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -13,6 +14,36 @@ import { ZkidWalletProvider } from '@zcloak/login-providers';
 import { BaseProvider } from '@zcloak/login-providers/base/Provider';
 
 import { attester, ctype } from '../defaults';
+
+const ErrorContainer = styled.div`
+  z-index: 999;
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  width: 500px;
+  padding: 40px 32px;
+  background: #ffffff;
+  border: 2px solid #000000;
+
+  > p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 32px;
+  }
+  > button {
+    height: 48px;
+    background: #fb22a6;
+    border: none;
+    padding: 0 24px;
+    border-radius: 9px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 0px;
+    color: #ffffff;
+    outline: none;
+  }
+`;
 
 export interface AppState {
   provider?: BaseProvider | null;
@@ -41,6 +72,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
   const [signature, setSignature] = useState<DidLoginResponse>();
   const [credentialDigest, setCredentialDigest] = useState<RequestCredentialDigestReponse>();
   const [credentialContent, setCredentialContent] = useState<RequestCredentialContentReponse>();
+  const [showError, setShowError] = useState(true);
 
   useEffect(() => {
     if (provider) provider.isAuth().then(setAuthed);
@@ -134,7 +166,36 @@ function AppProvider({ children }: { children: React.ReactNode }) {
     ]
   );
 
-  return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={state}>
+      {!provider && showError && (
+        <ErrorContainer>
+          <p>You have not installed zkID Wallet.</p>
+          <button
+            onClick={() =>
+              window.open(
+                'https://chrome.google.com/webstore/detail/zcloak-id-wallet/hkdbehojhcibpbcdpjphajfbgigldjkh'
+              )
+            }
+          >
+            Download
+          </button>
+          <button
+            onClick={() => setShowError(false)}
+            style={{
+              marginLeft: 20,
+              background: '#fff',
+              border: '1px solid #FB22A6',
+              color: '#FB22A6'
+            }}
+          >
+            I know
+          </button>
+        </ErrorContainer>
+      )}
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export default AppProvider;

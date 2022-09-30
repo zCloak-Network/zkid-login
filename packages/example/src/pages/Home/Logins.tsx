@@ -163,8 +163,8 @@ function Logins() {
       <Wrapper>
         <Container<RequestCredentialDigestReponse>
           codes={[
-            'provider.didLogin(challenge)',
-            'verifyDidLogin(challenge, data, did.authenticationKey)'
+            'provider.requestCredentialDigest(challenge, ctype.hash, attester)',
+            'verifyCredentialDigest(data, challenge, did.didUri)'
           ]}
           desc="I can prove I am a verified member of this mockDAO."
           login={loginWithCredentialDigest}
@@ -180,8 +180,8 @@ function Logins() {
       <Wrapper>
         <Container<RequestCredentialContentReponse>
           codes={[
-            'provider.didLogin(challenge)',
-            'verifyDidLogin(challenge, data, did.authenticationKey)'
+            'provider.requestCredentialContent',
+            'verifyCredentialContent(data, challenge, did.didUri)'
           ]}
           desc="Let’s vote on some proposals, only those whose member level>2 can vote."
           login={loginWithCredentialContent}

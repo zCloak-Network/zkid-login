@@ -221,7 +221,7 @@ function Connect() {
               Import to zkID Wallet
             </ButtonEnable>
           </Card>
-        ) : !mading ? (
+        ) : mading ? (
           <Card title="Credential type- Membership Card">
             <div className="form-item">
               <p>Membership level:</p>
