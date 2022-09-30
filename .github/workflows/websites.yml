@@ -7,14 +7,12 @@ on:
   workflow_dispatch:
 
 
-# Allow one concurrent deployment
 concurrency:
   group: "websites"
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
+  websites:
     if: "! startsWith(github.event.head_commit.message, '[CI Skip]')"
     runs-on: ubuntu-latest
     environment:
