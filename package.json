@@ -35,6 +35,7 @@
     "@babel/runtime": "^7.19.0",
     "@types/jest": "^27.4.0",
     "@types/react": "^18.0.9",
+    "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "^18.0.5",
     "@types/store": "^2.0.2",
     "@zcloak/dev": "^0.2.1",

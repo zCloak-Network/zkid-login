@@ -1,4 +1,3 @@
-import { CssBaseline, StyledEngineProvider } from '@mui/material';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
 import { createRoot } from 'react-dom/client';
 
@@ -13,11 +12,4 @@ if (!rootElement) {
 
 const root = createRoot(rootElement);
 
-cryptoWaitReady().then(() =>
-  root.render(
-    <StyledEngineProvider injectFirst>
-      <CssBaseline />
-      <Root />
-    </StyledEngineProvider>
-  )
-);
+cryptoWaitReady().then(() => root.render(<Root />));
