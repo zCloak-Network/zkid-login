@@ -255,11 +255,11 @@ function Connect() {
             <ButtonEnable onClick={() => createCredential(contents)}>Submit</ButtonEnable>
           </Card>
         ) : (
-          <Card bg="#545454" title="Made Credential">
+          <Card bg="#545454" title="Prepare Credential">
             <p style={{ marginBottom: 27, fontSize: 20, fontWeight: 500 }}>
               Second, you need to prepare a credential.
             </p>
-            <ButtonEnable onClick={() => setMading(true)}>Made Credential</ButtonEnable>
+            <ButtonEnable onClick={() => setMading(true)}>Prepare Credential</ButtonEnable>
           </Card>
         )}
       </Content>
