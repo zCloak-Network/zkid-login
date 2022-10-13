@@ -14,12 +14,12 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.1.2-0",
+  "version": "0.1.2-1",
   "main": "index.js",
   "dependencies": {
     "@kiltprotocol/types": "^0.28.0",
     "@polkadot/util": "^10.1.9",
-    "@zcloak/login-rpc": "0.1.2-0",
+    "@zcloak/login-rpc": "0.1.2-1",
     "eventemitter3": "^4.0.7"
   }
 }
