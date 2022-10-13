@@ -124,7 +124,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       if (provider && authed) {
         const data = await provider.requestCredentialContent(
           challenge,
-          ['Name', 'Birthday', 'Level'],
+          ['Level'],
           ctype.hash,
           attester
         );

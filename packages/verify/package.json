@@ -3,12 +3,12 @@
   "bugs": "https://github.com/zCloak-Network/zkid-login/issues",
   "contributors": [],
   "description": "zCloak login-verify",
-  "homepage": "https://github.com/zCloak-Network/zkid-login/tree/master/packages/login-verify#readme",
+  "homepage": "https://github.com/zCloak-Network/zkid-login/tree/master/packages/verify#readme",
   "license": "Apache-2.0",
   "maintainers": [],
   "name": "@zcloak/login-verify",
   "repository": {
-    "directory": "packages/login-verify",
+    "directory": "packages/verify",
     "type": "git",
     "url": "https://github.com/zCloak-Network/zkid-login.git"
   },
