@@ -69,7 +69,7 @@ function Hero() {
       <div>
         <img src="logo_zkid_large.svg" />
         <h1>zkID Login</h1>
-        <h2>Data and computation, keep both in your hand.</h2>
+        <h2>Data and computation, keep both in your own hands.</h2>
         <div className="links">
           <div onClick={() => window.open(zkidWalletLink)}>
             <div>zkID Wallet</div>
