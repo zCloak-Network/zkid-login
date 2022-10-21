@@ -1,3 +1,6 @@
+// Copyright 2021-2022 zcloak authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 import 'react-datepicker/dist/react-datepicker.css';
 
 import type { ICredential } from '@kiltprotocol/types';

@@ -1,6 +1,6 @@
-/**
- * document scroll
- */
+// Copyright 2021-2022 zcloak authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 import React, { useEffect, useRef, useState } from 'react';
 
 import { ScrollContextState } from './types';

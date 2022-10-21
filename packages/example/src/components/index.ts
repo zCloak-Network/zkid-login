@@ -1,3 +1,6 @@
+// Copyright 2021-2022 zcloak authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 export { default as Address } from './Address';
 export { default as AppProvider, AppContext } from './AppProvider';
 export { default as Button } from './Button';
