@@ -4180,12 +4180,12 @@ __metadata:
   resolution: "@zcloak/login-providers@workspace:packages/providers"
   dependencies:
     "@polkadot/util": ^10.1.12
-    "@zcloak/login-rpc": 0.1.2-4
+    "@zcloak/login-rpc": 0.2.0
     eventemitter3: ^4.0.7
   languageName: unknown
   linkType: soft
 
-"@zcloak/login-rpc@0.1.2-4, @zcloak/login-rpc@workspace:packages/rpc":
+"@zcloak/login-rpc@0.2.0, @zcloak/login-rpc@workspace:packages/rpc":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc@workspace:packages/rpc"
   dependencies:
@@ -4205,7 +4205,7 @@ __metadata:
     "@polkadot/util": ^10.1.9
     "@zcloak/did": ^0.6.1
     "@zcloak/did-resolver": ^0.6.1
-    "@zcloak/login-rpc": 0.1.2-4
+    "@zcloak/login-rpc": 0.2.0
     "@zcloak/vc": ^0.6.1
     "@zcloak/verify": ^0.6.1
   languageName: unknown
