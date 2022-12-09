@@ -4,10 +4,10 @@
 import type {
   DidInfo,
   DidLoginResponse,
-  HexString,
   RequestCredentialContentReponse,
   RequestCredentialDigestReponse
 } from '@zcloak/login-rpc';
+import type { HexString } from '@zcloak/login-rpc/types';
 
 import styled from '@emotion/styled';
 import { init } from '@kiltprotocol/core';

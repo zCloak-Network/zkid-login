@@ -51,7 +51,7 @@ export async function getW3Name(addressOrDidUri: DidUri | string): Promise<strin
 }
 
 interface Props {
-  value?: DidUri | undefined | null;
+  value?: string | undefined | null;
   shorten?: boolean;
 }
 
@@ -63,7 +63,7 @@ const DidName: React.FC<Props> = ({ shorten = true, value }) => {
 
     if (!Did.Utils.isUri(value)) return 'Not Did uri';
 
-    const { identifier, type } = Did.Utils.parseDidUri(value);
+    const { identifier, type } = Did.Utils.parseDidUri(value as any);
 
     if (type === 'light') {
       return identifier.slice(2);

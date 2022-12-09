@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import styled from '@emotion/styled';
-import { AppContext } from 'example/components';
 import React, { useContext, useMemo } from 'react';
 
+import { AppContext } from '../components';
 import { useScroll } from '../hooks';
 import Did from './Did';
 
@@ -107,12 +107,14 @@ function Header() {
                 width: 150
               }}
             >
-              {credentialContent?.attestation.claimHash ?? credentialDigest?.rootHash ?? 'None'}
+              {(credentialContent as any)?.attestation?.claimHash ??
+                (credentialDigest as any)?.rootHash ??
+                'None'}
             </p>
           </div>
           <div>
             <p>Membership Level</p>
-            <p>{(credentialContent?.request.claim.contents.Level as number) || 'None'}</p>
+            <p>{((credentialContent as any)?.request?.claim.contents.Level as number) || 'None'}</p>
           </div>
         </div>
       </HeaderContainer>

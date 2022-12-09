@@ -2,11 +2,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { DidUri } from '@kiltprotocol/types';
+import type { DidResolver } from '@zcloak/did-resolver';
 import type { RequestCredentialContentReponse } from '@zcloak/login-rpc';
+import type { WrapperDidUrl } from '@zcloak/login-rpc/types';
 
-import { Credential, init } from '@kiltprotocol/core';
+import { Credential } from '@kiltprotocol/core';
+import { Utils } from '@kiltprotocol/did';
+import { assert } from '@polkadot/util';
 
-import { KILT_ENDPOINT } from './defaults';
+import { isDidUrl, isSameUri } from '@zcloak/did/utils';
+import { isVP } from '@zcloak/vc/utils';
+import { vpVerify } from '@zcloak/verify';
 
 /**
  * verify credential content, pass credential content, will check bellow.
@@ -16,19 +22,26 @@ import { KILT_ENDPOINT } from './defaults';
  * @param credential the `RequestCredentialContentReponse` of login-rpc, get it use `did_requestCredentialContent` method
  * @param challenge a random string, pass it when verify claimerSignature.
  * @param owner the credential owner
- * @param opts.kiltEndpoint kilt endpoint address, default is `KILT_ENDPOINT`
  * @returns `boolean` verify result
  */
 export async function verifyCredentialContent(
   credential: RequestCredentialContentReponse,
   challenge: string,
-  owner: DidUri,
-  opts?: { kiltEndpoint: string }
+  owner: WrapperDidUrl,
+  resolver?: DidResolver
 ): Promise<boolean> {
-  await init({ address: opts?.kiltEndpoint || KILT_ENDPOINT });
+  if (isVP(credential)) {
+    assert(isDidUrl(owner), 'expect owner to be zkid did url');
+
+    return (
+      challenge === credential.proof.challenge &&
+      isSameUri(credential.proof.verificationMethod, owner) &&
+      vpVerify(credential, resolver)
+    );
+  }
 
   return (
-    credential.request.claim.owner === owner &&
+    Utils.isSameSubject(credential.request.claim.owner, owner as DidUri) &&
     Credential.isICredential(credential) &&
     credential.request.claimerSignature?.challenge === challenge &&
     (await Credential.verify(credential))

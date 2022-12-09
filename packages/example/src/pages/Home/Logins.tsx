@@ -3,7 +3,6 @@
 
 import type {
   DidLoginResponse,
-  HexString,
   RequestCredentialContentReponse,
   RequestCredentialDigestReponse
 } from '@zcloak/login-rpc';
@@ -12,6 +11,7 @@ import styled from '@emotion/styled';
 import { randomAsHex } from '@polkadot/util-crypto';
 import { useContext, useMemo, useState } from 'react';
 
+import { HexString } from '@zcloak/login-rpc/types';
 import {
   verifyCredentialContent,
   verifyCredentialDigest,
@@ -157,9 +157,7 @@ function Logins() {
           tip="Tips: this only brings with DID info."
           title="Login with DID"
           verify={(data, challenge) =>
-            did
-              ? Promise.resolve(verifyDidLogin(challenge, data, did.authenticationKey))
-              : Promise.resolve(false)
+            did ? Promise.resolve(verifyDidLogin(challenge, data)) : Promise.resolve(false)
           }
         />
       </Wrapper>

@@ -119,11 +119,11 @@ function Connect() {
     async (contents: any) => {
       if (!did || !provider) return;
       const keyring = new Keyring(provider);
-      const claimer = LightDidDetails.fromUri(did.didUri);
+      const claimer = LightDidDetails.fromUri(did.didUri as any);
       const receiver = await FullDidDetails.fromChainInfo(attester);
 
       if (!receiver || !claimer.encryptionKey || !receiver.encryptionKey) return;
-      const claim = Claim.fromCTypeAndClaimContents(ctype, contents, did.didUri);
+      const claim = Claim.fromCTypeAndClaimContents(ctype, contents, did.didUri as any);
       const request = await RequestForAttestation.fromClaim(claim).signWithDidKey(
         keyring,
         claimer,

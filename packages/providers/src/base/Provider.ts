@@ -1,14 +1,13 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { DidUri } from '@kiltprotocol/types';
 import type {
   DidInfo,
-  HexString,
   Request,
   RequestCredentialContentReponse,
   RequestCredentialDigestReponse
 } from '@zcloak/login-rpc';
+import type { DidSignature, HexString, WrapperDidUrl } from '@zcloak/login-rpc/types';
 
 import { isHex, isString, isU8a, numberToHex, stringToHex, u8aToHex } from '@polkadot/util';
 
@@ -64,7 +63,7 @@ export abstract class BaseProvider extends Events {
   public requestCredentialDigest(
     challenge: string,
     ctypehash?: HexString,
-    attester?: DidUri
+    attester?: WrapperDidUrl
   ): Promise<RequestCredentialDigestReponse> {
     return this.request('did_requestCredentialDigest', { challenge, ctypehash, attester });
   }
@@ -73,7 +72,7 @@ export abstract class BaseProvider extends Events {
     challenge: string,
     contentKeys?: string[],
     ctypehash?: HexString,
-    attester?: DidUri
+    attester?: WrapperDidUrl
   ): Promise<RequestCredentialContentReponse> {
     return this.request('did_requestCredentialContent', {
       challenge,
@@ -83,7 +82,7 @@ export abstract class BaseProvider extends Events {
     });
   }
 
-  public didLogin(data: HexString | Uint8Array | string | number): Promise<HexString> {
+  public didLogin(data: HexString | Uint8Array | string | number): Promise<DidSignature> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -95,7 +94,7 @@ export abstract class BaseProvider extends Events {
     return this.request('did_login', { payload });
   }
 
-  public sign(data: HexString | Uint8Array | string | number): Promise<HexString> {
+  public sign(data: HexString | Uint8Array | string | number): Promise<DidSignature> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
