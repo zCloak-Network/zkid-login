@@ -1,7 +1,13 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { DidSignature, DidUri, ICredential } from '@kiltprotocol/types';
+import type {
+  DidSignature,
+  HexString,
+  WrapperCredential,
+  WrapperCredentialDigest,
+  WrapperDidUrl
+} from './types';
 
 // [RpcRequestMethod]: [Params, Returns]
 export interface RequestRpcs {
@@ -21,10 +27,8 @@ export interface RequestRpcs {
 
 export type RequestMethods = keyof RequestRpcs;
 
-export type HexString = `0x${string}`;
-
 export type DidInfo = {
-  didUri: DidUri;
+  didUri: WrapperDidUrl;
   authenticationKey: HexString;
   encryptionKey: HexString[];
   attestationKey?: HexString;
@@ -35,39 +39,30 @@ export type DidInfo = {
 export type RequestCredentialDigestParams = {
   challenge: string;
   ctypehash?: HexString;
-  attester?: DidUri;
+  attester?: WrapperDidUrl;
 };
 // method did_requestCredentialDigest returns
-export type RequestCredentialDigestReponse = {
-  rootHash: HexString;
-  ctypeHash: HexString;
-  attested: boolean;
-  revoked: boolean;
-  owner: DidUri;
-  attester: DidUri;
-  claimerSignature: DidSignature;
-  challenge: string;
-};
+export type RequestCredentialDigestReponse = WrapperCredentialDigest;
 
 // method did_requestCredentialContent params
 export type RequestCredentialContentParams = {
   challenge: string;
   contentKeys?: string[];
   ctypehash?: HexString;
-  attester?: DidUri;
+  attester?: WrapperDidUrl;
 };
 // method did_requestCredentialContent returns
-export type RequestCredentialContentReponse = ICredential;
+export type RequestCredentialContentReponse = WrapperCredential;
 
 export type DidLoginParams = {
   payload: HexString;
 };
-export type DidLoginResponse = HexString;
+export type DidLoginResponse = DidSignature;
 
 export type DidSignParams = {
   payload: HexString;
 };
-export type DidSignResponse = HexString;
+export type DidSignResponse = DidSignature;
 
 export type DidEncryptParams = {
   peerPublicKey: HexString;

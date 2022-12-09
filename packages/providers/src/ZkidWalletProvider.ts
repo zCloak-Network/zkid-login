@@ -1,7 +1,8 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { HexString, Request } from '@zcloak/login-rpc';
+import type { Request } from '@zcloak/login-rpc';
+import type { HexString } from '@zcloak/login-rpc/types';
 
 import { BaseProvider } from './base/Provider';
 

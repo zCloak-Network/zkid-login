@@ -1,14 +1,18 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
+import type { DidResolver } from '@zcloak/did-resolver';
 import type { RequestCredentialDigestReponse } from '@zcloak/login-rpc';
+import type { WrapperDidUrl } from '@zcloak/login-rpc/types';
 
-import { Attestation, init } from '@kiltprotocol/core';
-import { verifyDidSignature } from '@kiltprotocol/did';
-import { type DidUri, KeyRelationship } from '@kiltprotocol/types';
-import { u8aToU8a } from '@polkadot/util';
+import { Attestation } from '@kiltprotocol/core';
+import { Utils, verifyDidSignature } from '@kiltprotocol/did';
+import { type DidResourceUri, type DidUri, KeyRelationship } from '@kiltprotocol/types';
+import { assert, u8aToU8a } from '@polkadot/util';
 
-import { KILT_ENDPOINT } from './defaults';
+import { isDidUrl, isSameUri } from '@zcloak/did/utils';
+import { isVP } from '@zcloak/vc/utils';
+import { vpVerify } from '@zcloak/verify';
 
 /**
  * verify credential digest, pass credential content, will check bellow.
@@ -18,21 +22,28 @@ import { KILT_ENDPOINT } from './defaults';
  * @param credentialDigest the `RequestCredentialDigestReponse` of login-rpc, get it use `did_requestCredentialDigest` method
  * @param challenge a random string, pass it when verify claimerSignature.
  * @param owner the credential owner
- * @param opts.kiltEndpoint kilt endpoint address, default is `KILT_ENDPOINT`
  * @returns `boolean` verify result
  */
 export async function verifyCredentialDigest(
   credentialDigest: RequestCredentialDigestReponse,
   challenge: string,
-  owner: DidUri,
-  opts?: { kiltEndpoint: string }
+  owner: WrapperDidUrl,
+  resolver?: DidResolver
 ): Promise<boolean> {
-  await init({ address: opts?.kiltEndpoint || KILT_ENDPOINT });
+  if (isVP(credentialDigest)) {
+    assert(isDidUrl(owner), 'expect owner to be zkid did url');
+
+    return (
+      challenge === credentialDigest.proof.challenge &&
+      isSameUri(credentialDigest.proof.verificationMethod, owner) &&
+      vpVerify(credentialDigest, resolver)
+    );
+  }
 
   const data = new Uint8Array([...u8aToU8a(credentialDigest.rootHash), ...u8aToU8a(challenge)]);
 
   return (
-    credentialDigest.owner === owner,
+    Utils.isSameSubject(credentialDigest.owner, owner as DidUri),
     (await Attestation.checkValidity({
       claimHash: credentialDigest.rootHash,
       cTypeHash: credentialDigest.ctypeHash,
@@ -42,7 +53,10 @@ export async function verifyCredentialDigest(
     })) &&
       (
         await verifyDidSignature({
-          signature: credentialDigest.claimerSignature,
+          signature: {
+            keyUri: credentialDigest.claimerSignature.keyUri as DidResourceUri,
+            signature: credentialDigest.claimerSignature.signature
+          },
           message: data,
           expectedVerificationMethod: KeyRelationship.authentication
         })

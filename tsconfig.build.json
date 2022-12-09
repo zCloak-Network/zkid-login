@@ -1,12 +1,11 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./packages",
-    "outDir": "./build"
+    "composite": true
   },
-  "exclude": [
-    "build/**/*",
-    "**/build/**/*"
-  ],
-  "references": []
+  "files": [],
+  "references": [
+    { "path": "./packages/providers/tsconfig.build.json" },
+    { "path": "./packages/rpc/tsconfig.build.json" },
+    { "path": "./packages/verify/tsconfig.build.json" }
+  ]
 }

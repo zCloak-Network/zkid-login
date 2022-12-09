@@ -32,7 +32,7 @@ export class Keyring implements Keystore<SigningAlgorithms, EncryptionAlgorithms
   }: KeystoreSigningData<A>): Promise<ResponseData<A>> {
     const signature = await this.#provider.sign(data);
 
-    return Promise.resolve({ alg, data: hexToU8a(signature) });
+    return Promise.resolve({ alg, data: hexToU8a(signature.signature) });
   }
 
   public async encrypt<A extends 'x25519-xsalsa20-poly1305'>({
