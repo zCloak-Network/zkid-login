@@ -5,6 +5,7 @@ import type { Request } from '@zcloak/login-rpc';
 import type { HexString } from '@zcloak/login-rpc/types';
 
 import { BaseProvider } from './base/Provider';
+import { ZkpGenRequest } from './types';
 
 const zkid: { request: Request; events: any } = (window as any)?.zkid;
 
@@ -37,5 +38,9 @@ export class ZkidWalletProvider extends BaseProvider {
 
   importCredential(data: HexString) {
     return zkid.request('credential_import' as any, { credential: data });
+  }
+
+  generateZkp(option: ZkpGenRequest) {
+    return zkid.request('proof_generate', option);
   }
 }

@@ -1,6 +1,7 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
+import { ZkpGenRequest, ZkpGenResponse } from '@zcloak/login-providers/types';
 import type {
   DidSignature,
   HexString,
@@ -23,6 +24,7 @@ export interface RequestRpcs {
   did_sign: [DidSignParams, DidSignResponse];
   did_encrypt: [DidEncryptParams, DidEncryptResponse];
   did_decrypt: [DidDecryptParams, DidDecryptResponse];
+  proof_generate: [ZkpGenRequest, ZkpGenResponse];
 }
 
 export type RequestMethods = keyof RequestRpcs;
