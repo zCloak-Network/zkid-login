@@ -5,13 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ZkidWalletProvider = void 0;
 var _Provider = require("./base/Provider");
-var _window, _window2;
-// const zkid: { request: Request; on?: (eventName?: string, ...args: any[]) => void } = (
-//   window as any
-// )?.zkid;
-
+var _window;
 const zkid = (_window = window) == null ? void 0 : _window.zkid;
-console.log('[ window.zkid ] >', (_window2 = window) == null ? void 0 : _window2.zkid);
 class ZkidWalletProvider extends _Provider.BaseProvider {
   static isInstalled() {
     return !!window.zkid;
@@ -43,6 +38,9 @@ class ZkidWalletProvider extends _Provider.BaseProvider {
     return zkid.request('credential_import', {
       credential: data
     });
+  }
+  generateZkp(option) {
+    return zkid.request('proof_generate', option);
   }
 }
 exports.ZkidWalletProvider = ZkidWalletProvider;

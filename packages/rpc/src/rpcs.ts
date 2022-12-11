@@ -1,7 +1,6 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { ZkpGenRequest, ZkpGenResponse } from '@zcloak/login-providers/types';
 import type {
   DidSignature,
   HexString,
@@ -77,3 +76,17 @@ export type DidDecryptParams = {
   payload: HexString;
 };
 export type DidDecryptResponse = HexString;
+
+export type ZkpGenRequest = {
+  ctype: `0x${string}`;
+  attester: WrapperDidUrl;
+  program: string;
+};
+
+export type ZkpGenResponse = {
+  outputs: number[];
+  starkproof: unknown;
+  programHash: `0x${string}`;
+  ctype: `0x${string}`;
+  attester: WrapperDidUrl;
+};
