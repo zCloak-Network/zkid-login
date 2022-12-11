@@ -6,18 +6,18 @@ Object.defineProperty(exports, "__esModule", {
 exports.ZkidWalletProvider = void 0;
 var _Provider = require("./base/Provider");
 var _window;
-const zkid = (_window = window) == null ? void 0 : _window.zkid;
+const injectWindow = (_window = window) == null ? void 0 : _window.zkid;
 class ZkidWalletProvider extends _Provider.BaseProvider {
   static isInstalled() {
     return !!window.zkid;
   }
   constructor() {
-    var _zkid$events$on, _zkid$events, _zkid$events$on2, _zkid$events2, _zkid$events$on3, _zkid$events3;
-    if (!zkid) throw new Error('Zkid Wallet not install');
-    super(zkid.request);
-    (_zkid$events$on = (_zkid$events = zkid.events).on) == null ? void 0 : _zkid$events$on.call(_zkid$events, 'zkID_Wallet_didLoggedChanged', this.#didChanged);
-    (_zkid$events$on2 = (_zkid$events2 = zkid.events).on) == null ? void 0 : _zkid$events$on2.call(_zkid$events2, 'zkID_Wallet_lock', this.#lock);
-    (_zkid$events$on3 = (_zkid$events3 = zkid.events).on) == null ? void 0 : _zkid$events$on3.call(_zkid$events3, 'zkID_Wallet_unlock', this.#unlock);
+    var _injectWindow$zkid$ev, _injectWindow$zkid$ev2, _injectWindow$zkid$ev3, _injectWindow$zkid$ev4, _injectWindow$zkid$ev5, _injectWindow$zkid$ev6;
+    if (!injectWindow.zkid) throw new Error('Zkid Wallet not install');
+    super(injectWindow.zkid.request);
+    (_injectWindow$zkid$ev = (_injectWindow$zkid$ev2 = injectWindow.zkid.events).on) == null ? void 0 : _injectWindow$zkid$ev.call(_injectWindow$zkid$ev2, 'zkID_Wallet_didLoggedChanged', this.#didChanged);
+    (_injectWindow$zkid$ev3 = (_injectWindow$zkid$ev4 = injectWindow.zkid.events).on) == null ? void 0 : _injectWindow$zkid$ev3.call(_injectWindow$zkid$ev4, 'zkID_Wallet_lock', this.#lock);
+    (_injectWindow$zkid$ev5 = (_injectWindow$zkid$ev6 = injectWindow.zkid.events).on) == null ? void 0 : _injectWindow$zkid$ev5.call(_injectWindow$zkid$ev6, 'zkID_Wallet_unlock', this.#unlock);
   }
   #didChanged = (() => {
     var _this = this;
@@ -35,12 +35,14 @@ class ZkidWalletProvider extends _Provider.BaseProvider {
     this.emit('unlock');
   };
   importCredential(data) {
-    return zkid.request('credential_import', {
+    var _injectWindow$zkid;
+    return (_injectWindow$zkid = injectWindow.zkid) == null ? void 0 : _injectWindow$zkid.request('credential_import', {
       credential: data
     });
   }
   generateZkp(option) {
-    return zkid.request('proof_generate', option);
+    var _injectWindow$zkid2;
+    return (_injectWindow$zkid2 = injectWindow.zkid) == null ? void 0 : _injectWindow$zkid2.request('proof_generate', option);
   }
 }
 exports.ZkidWalletProvider = ZkidWalletProvider;
