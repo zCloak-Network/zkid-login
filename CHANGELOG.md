@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [0.3.1](https://github.com/zCloak-Network/zkid-login/compare/v0.3.0...v0.3.1) (2022-12-11)
+
+
+### Bug Fixes
+
+* **providers:** injectWindow error because use window.zkid object ([f335d3f](https://github.com/zCloak-Network/zkid-login/commit/f335d3f0769cf0ba8684c47dd78698ac45e7dc14))
+
+
 ## [0.3.0](https://github.com/zCloak-Network/zkid-login/compare/v0.2.0...v0.3.0) (2022-12-11)
 
 
