@@ -12,12 +12,12 @@ class ZkidWalletProvider extends _Provider.BaseProvider {
     return !!window.zkid;
   }
   constructor() {
-    var _zkid$on, _zkid$on2, _zkid$on3;
+    var _zkid$events$on, _zkid$events, _zkid$events$on2, _zkid$events2, _zkid$events$on3, _zkid$events3;
     if (!zkid) throw new Error('Zkid Wallet not install');
     super(zkid.request);
-    (_zkid$on = zkid.on) == null ? void 0 : _zkid$on.call(zkid, 'did_changed', this.#didChanged);
-    (_zkid$on2 = zkid.on) == null ? void 0 : _zkid$on2.call(zkid, 'lock', this.#lock);
-    (_zkid$on3 = zkid.on) == null ? void 0 : _zkid$on3.call(zkid, 'unlock', this.#unlock);
+    (_zkid$events$on = (_zkid$events = zkid.events).on) == null ? void 0 : _zkid$events$on.call(_zkid$events, 'zkID_Wallet_didLoggedChanged', this.#didChanged);
+    (_zkid$events$on2 = (_zkid$events2 = zkid.events).on) == null ? void 0 : _zkid$events$on2.call(_zkid$events2, 'zkID_Wallet_lock', this.#lock);
+    (_zkid$events$on3 = (_zkid$events3 = zkid.events).on) == null ? void 0 : _zkid$events$on3.call(_zkid$events3, 'zkID_Wallet_unlock', this.#unlock);
   }
   #didChanged = (() => {
     var _this = this;
@@ -38,6 +38,9 @@ class ZkidWalletProvider extends _Provider.BaseProvider {
     return zkid.request('credential_import', {
       credential: data
     });
+  }
+  generateZkp(option) {
+    return zkid.request('proof_generate', option);
   }
 }
 exports.ZkidWalletProvider = ZkidWalletProvider;

@@ -23,6 +23,7 @@ export interface RequestRpcs {
   did_sign: [DidSignParams, DidSignResponse];
   did_encrypt: [DidEncryptParams, DidEncryptResponse];
   did_decrypt: [DidDecryptParams, DidDecryptResponse];
+  proof_generate: [ZkpGenRequest, ZkpGenResponse];
 }
 
 export type RequestMethods = keyof RequestRpcs;
@@ -75,3 +76,17 @@ export type DidDecryptParams = {
   payload: HexString;
 };
 export type DidDecryptResponse = HexString;
+
+export type ZkpGenRequest = {
+  ctype: `0x${string}`;
+  attester: WrapperDidUrl;
+  program: string;
+};
+
+export type ZkpGenResponse = {
+  outputs: number[];
+  starkproof: unknown;
+  programHash: `0x${string}`;
+  ctype: `0x${string}`;
+  attester: WrapperDidUrl;
+};
