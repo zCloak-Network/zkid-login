@@ -6,7 +6,7 @@ import type { HexString } from '@zcloak/login-rpc/types';
 
 import { BaseProvider } from './base/Provider';
 
-const injectWindow: { zkid?: { request: Request; events: any } } = (window as any)?.zkid;
+const injectWindow: { zkid?: { request: Request; events: any } } = window as any;
 
 export class ZkidWalletProvider extends BaseProvider {
   public static isInstalled(): boolean {
