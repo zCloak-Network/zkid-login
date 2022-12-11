@@ -6,7 +6,7 @@ import type { HexString } from '@zcloak/login-rpc/types';
 
 import { BaseProvider } from './base/Provider';
 
-const zkid: { request: Request; events: any } = (window as any)?.zkid;
+const injectWindow: { zkid?: { request: Request; events: any } } = (window as any)?.zkid;
 
 export class ZkidWalletProvider extends BaseProvider {
   public static isInstalled(): boolean {
@@ -14,13 +14,13 @@ export class ZkidWalletProvider extends BaseProvider {
   }
 
   constructor() {
-    if (!zkid) throw new Error('Zkid Wallet not install');
+    if (!injectWindow.zkid) throw new Error('Zkid Wallet not install');
 
-    super(zkid.request);
+    super(injectWindow.zkid.request);
 
-    zkid.events.on?.('zkID_Wallet_didLoggedChanged', this.#didChanged);
-    zkid.events.on?.('zkID_Wallet_lock', this.#lock);
-    zkid.events.on?.('zkID_Wallet_unlock', this.#unlock);
+    injectWindow.zkid.events.on?.('zkID_Wallet_didLoggedChanged', this.#didChanged);
+    injectWindow.zkid.events.on?.('zkID_Wallet_lock', this.#lock);
+    injectWindow.zkid.events.on?.('zkID_Wallet_unlock', this.#unlock);
   }
 
   #didChanged = (...args: any[]) => {
@@ -36,10 +36,10 @@ export class ZkidWalletProvider extends BaseProvider {
   };
 
   importCredential(data: HexString) {
-    return zkid.request('credential_import' as any, { credential: data });
+    return injectWindow.zkid?.request('credential_import' as any, { credential: data });
   }
 
   generateZkp(option: ZkpGenRequest) {
-    return zkid.request('proof_generate', option);
+    return injectWindow.zkid?.request('proof_generate', option);
   }
 }
