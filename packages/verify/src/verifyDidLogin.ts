@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { DidResourceUri } from '@kiltprotocol/types';
-import type { DidSignature, HexString } from '@zcloak/login-rpc/types';
+import type { RequestRpcs } from '@zcloak/login-rpc';
 
 import { verifyDidSignature } from '@kiltprotocol/did';
 import { KeyRelationship } from '@kiltprotocol/types';
@@ -12,6 +12,8 @@ import { isDidUrl } from '@zcloak/did/utils';
 import { DidResolver } from '@zcloak/did-resolver';
 import { didVerify } from '@zcloak/verify';
 
+type HexString = `0x${string}`;
+
 /**
  * verify the signature obtained by [[did_login]] is correct,
  * did_login is the signature with did's authenticationKey, so the function is to check signature is valid
@@ -20,9 +22,9 @@ import { didVerify } from '@zcloak/verify';
  * @param publicKey publicKey used for signing
  * @returns `boolean` verify result
  */
-export async function verifyDidLogin(
+export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 'did_login'>(
   message: HexString | Uint8Array | string,
-  { keyUri, signature }: DidSignature,
+  { keyUri, signature }: RequestRpcs<T>[T][1],
   resolver?: DidResolver
 ): Promise<boolean> {
   if (isDidUrl(keyUri)) {

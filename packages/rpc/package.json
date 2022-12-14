@@ -15,10 +15,5 @@
   "sideEffects": false,
   "type": "module",
   "version": "0.3.1",
-  "main": "index.js",
-  "devDependencies": {
-    "@kiltprotocol/types": "^0.28.2",
-    "@zcloak/did-resolver": "^0.6.2-0",
-    "@zcloak/vc": "^0.6.2-0"
-  }
+  "main": "index.js"
 }

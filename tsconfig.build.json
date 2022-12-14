@@ -6,6 +6,7 @@
   "references": [
     { "path": "./packages/providers/tsconfig.build.json" },
     { "path": "./packages/rpc/tsconfig.build.json" },
+    { "path": "./packages/rpc-defines/tsconfig.build.json" },
     { "path": "./packages/verify/tsconfig.build.json" }
   ]
 }
