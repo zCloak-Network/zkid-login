@@ -1,6 +1,7 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
+import type { DidDocument } from '@zcloak/did-resolver/types';
 import type {
   DidSignature,
   HexString,
@@ -12,6 +13,7 @@ import type {
 // [RpcRequestMethod]: [Params, Returns]
 export interface RequestRpcs {
   wallet_requestAuth: [undefined, boolean];
+  wallet_requestAuthAndLogin: [undefined, DidLoginResponse];
   wallet_isAuth: [undefined, boolean];
   // get lock status in wallet
   wallet_isLocked: [undefined, boolean];
@@ -34,6 +36,9 @@ export type DidInfo = {
   encryptionKey: HexString[];
   attestationKey?: HexString;
   delegationKey?: HexString;
+} & {
+  // for zk did
+  document?: DidDocument;
 };
 
 // method did_requestCredentialDigest params
@@ -61,6 +66,12 @@ export type DidLoginParams = {
 export type DidLoginResponse = DidSignature;
 
 export type DidSignParams = {
+  key?:
+    | 'authentication'
+    | 'keyAgreement'
+    | 'assertionMethod'
+    | 'capabilityInvocation'
+    | 'capabilityDelegation';
   payload: HexString;
 };
 export type DidSignResponse = DidSignature;

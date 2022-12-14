@@ -82,7 +82,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
   }, [provider]);
 
   useEffect(() => {
-    if (provider && authed) provider.getCurrentDid().then(setDid);
+    if (provider && authed) provider.getCurrentDid().then(setDid as any);
   }, [authed, provider]);
 
   const auth = useCallback(async () => {
