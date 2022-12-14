@@ -3,8 +3,8 @@
 
 import type { DidUri } from '@kiltprotocol/types';
 import type { DidResolver } from '@zcloak/did-resolver';
-import type { RequestCredentialContentReponse } from '@zcloak/login-rpc';
-import type { WrapperDidUrl } from '@zcloak/login-rpc/types';
+import type { DidUrl } from '@zcloak/did-resolver/types';
+import type { RequestRpcs } from '@zcloak/login-rpc';
 
 import { Credential } from '@kiltprotocol/core';
 import { Utils } from '@kiltprotocol/did';
@@ -24,10 +24,14 @@ import { vpVerify } from '@zcloak/verify';
  * @param owner the credential owner
  * @returns `boolean` verify result
  */
-export async function verifyCredentialContent(
-  credential: RequestCredentialContentReponse,
+export async function verifyCredentialContent<
+  T extends
+    | 'did_requestCredentialContent'
+    | 'did_requestCredentialContent$Kilt' = 'did_requestCredentialContent'
+>(
+  credential: RequestRpcs<T>[T][1],
   challenge: string,
-  owner: WrapperDidUrl,
+  owner: T extends 'did_requestCredentialContent' ? DidUrl : DidUri,
   resolver?: DidResolver
 ): Promise<boolean> {
   if (isVP(credential)) {

@@ -4,14 +4,14 @@
     "composite": true,
     "jsx": "react-jsx",
     "paths": {
-      "example": ["example/src"],
-      "example/*": ["example/src/*"],
       "@zcloak/login-verify": ["verify/src"],
       "@zcloak/login-verify/*": ["verify/src/*"],
       "@zcloak/login-providers": ["providers/src"],
       "@zcloak/login-providers/*": ["providers/src/*"],
       "@zcloak/login-rpc": ["rpc/src"],
       "@zcloak/login-rpc/*": ["rpc/src/*"],
+      "@zcloak/login-rpc-defines": ["rpc-defines/src"],
+      "@zcloak/login-rpc-defines/*": ["rpc-defines/src/*"],
     },
     "skipLibCheck": true,
     "resolveJsonModule": true

@@ -21,7 +21,6 @@
     "clean": "zcloak-dev-clean-build",
     "lint": "zcloak-dev-run-lint && zcloak-dev-lint-dependencies",
     "postinstall": "zcloak-dev-yarn-only",
-    "start": "cd packages/example && yarn webpack serve --config webpack.serve.cjs --port 3000",
     "test": "echo \"test todo\"",
     "test:one": "zcloak-dev-run-test --detectOpenHandles --forceExit",
     "test:watch": "zcloak-dev-run-test --watch"
