@@ -1,8 +1,11 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { DidResourceUri } from '@kiltprotocol/types';
+import type { DidResourceUri, DidUri } from '@kiltprotocol/types';
+import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { RequestRpcs } from '@zcloak/login-rpc';
+import type { DidSignature as DidSignatureKilt } from '@zcloak/login-rpc-defines/defineKilt';
+import type { DidSignature as DidSignatureZk } from '@zcloak/login-rpc-defines/defineZk';
 
 import { verifyDidSignature } from '@kiltprotocol/did';
 import { KeyRelationship } from '@kiltprotocol/types';
@@ -24,9 +27,20 @@ type HexString = `0x${string}`;
  */
 export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 'did_login'>(
   message: HexString | Uint8Array | string,
-  { keyUri, signature }: RequestRpcs<T>[T][1],
+  data: RequestRpcs<T>[T][1],
   resolver?: DidResolver
 ): Promise<boolean> {
+  let keyUri: DidUri | DidUrl;
+  const signature = data.signature;
+
+  if ((data as DidSignatureZk).id) {
+    keyUri = (data as DidSignatureZk).id;
+  } else if ((data as DidSignatureKilt).keyUri) {
+    keyUri = (data as DidSignatureKilt).keyUri;
+  } else {
+    throw new Error('Not keyUri or id found');
+  }
+
   if (isDidUrl(keyUri)) {
     return didVerify(message, u8aToU8a(signature), keyUri, resolver);
   }

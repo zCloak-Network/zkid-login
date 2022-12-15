@@ -4,6 +4,8 @@
     "composite": true,
     "jsx": "react-jsx",
     "paths": {
+      "@zcloak/login-did": ["did/src"],
+      "@zcloak/login-did/*": ["did/src/*"],
       "@zcloak/login-verify": ["verify/src"],
       "@zcloak/login-verify/*": ["verify/src/*"],
       "@zcloak/login-providers": ["providers/src"],

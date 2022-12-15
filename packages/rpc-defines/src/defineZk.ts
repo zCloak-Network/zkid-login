@@ -1,15 +1,16 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
+import '@zcloak/login-rpc/types';
+
 import type { DidDocument, DidUrl, VerificationMethodType } from '@zcloak/did-resolver/types';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
-
-import { SignKeys } from '@zcloak/login-rpc/types';
 
 export type HexString = `0x${string}`;
 
 export type DidSignature = {
-  keyUri: DidUrl;
+  id: DidUrl;
+  type: VerificationMethodType;
   signature: string;
 };
 
@@ -55,7 +56,7 @@ export type DidLoginParams = {
 };
 
 export type DidSignParams = {
-  key?: SignKeys;
+  keyId?: DidUrl;
   payload: HexString;
 };
 

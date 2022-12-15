@@ -6,10 +6,3 @@ export interface RpcRequests {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RpcResponses {}
-
-export type SignKeys =
-  | 'authentication'
-  | 'keyAgreement'
-  | 'assertionMethod'
-  | 'capabilityInvocation'
-  | 'capabilityDelegation';
