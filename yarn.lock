@@ -3721,7 +3721,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zcloak/login-providers@workspace:packages/providers":
+"@zcloak/login-did@workspace:packages/did":
+  version: 0.0.0-use.local
+  resolution: "@zcloak/login-did@workspace:packages/did"
+  dependencies:
+    "@polkadot/util": ^10.2.1
+    "@zcloak/did": ^0.6.2-1
+    "@zcloak/did-resolver": ^0.6.2-1
+    "@zcloak/login-providers": ^0.3.2-1
+  languageName: unknown
+  linkType: soft
+
+"@zcloak/login-providers@^0.3.2-1, @zcloak/login-providers@workspace:packages/providers":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-providers@workspace:packages/providers"
   dependencies:

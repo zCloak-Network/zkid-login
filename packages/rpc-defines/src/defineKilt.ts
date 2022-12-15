@@ -1,9 +1,9 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { DidUri, ICredential } from '@kiltprotocol/types';
+import '@zcloak/login-rpc/types';
 
-import { SignKeys } from '@zcloak/login-rpc/types';
+import type { DidUri, ICredential } from '@kiltprotocol/types';
 
 type HexString = `0x${string}`;
 
@@ -57,7 +57,7 @@ export type DidLoginParams = {
 };
 
 export type DidSignParams = {
-  key?: SignKeys;
+  keyId?: string;
   payload: HexString;
 };
 

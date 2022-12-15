@@ -1,0 +1,25 @@
+{
+  "author": "zCloak",
+  "bugs": "https://github.com/zCloak-Network/zkid-login/issues",
+  "contributors": [],
+  "description": "zCloak login did",
+  "homepage": "https://github.com/zCloak-Network/zkid-login/tree/master/packages/did#readme",
+  "license": "Apache-2.0",
+  "maintainers": [],
+  "name": "@zcloak/login-did",
+  "repository": {
+    "directory": "packages/did",
+    "type": "git",
+    "url": "https://github.com/zCloak-Network/zkid-login.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "0.3.2-1",
+  "main": "index.js",
+  "dependencies": {
+    "@polkadot/util": "^10.2.1",
+    "@zcloak/did": "^0.6.2-1",
+    "@zcloak/did-resolver": "^0.6.2-1",
+    "@zcloak/login-providers": "^0.3.2-1"
+  }
+}

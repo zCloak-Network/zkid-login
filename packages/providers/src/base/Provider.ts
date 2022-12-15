@@ -5,7 +5,6 @@ import '@zcloak/login-rpc-defines/defineZk';
 
 import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { Request, RequestRpcs } from '@zcloak/login-rpc';
-import type { SignKeys } from '@zcloak/login-rpc/types';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
 import type { ProviderEvents } from '../types';
 
@@ -109,7 +108,7 @@ export class BaseProvider extends Events<ProviderEvents> {
 
   public sign(
     data: HexString | Uint8Array | string | number,
-    key?: SignKeys
+    keyId?: DidUrl
   ): Promise<RequestRpcs<'did_sign'>['did_sign'][1]> {
     const payload: HexString = isHex(data)
       ? data
@@ -119,7 +118,7 @@ export class BaseProvider extends Events<ProviderEvents> {
       ? stringToHex(data)
       : numberToHex(data);
 
-    return this.request('did_sign', { payload, key });
+    return this.request('did_sign', { payload, keyId });
   }
 
   public encrypt(
