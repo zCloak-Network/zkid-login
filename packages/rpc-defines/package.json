@@ -14,10 +14,10 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.3.2-1",
+  "version": "0.3.2-2",
   "main": "index.js",
   "dependencies": {
-    "@zcloak/login-rpc": "^0.3.2-1"
+    "@zcloak/login-rpc": "^0.3.2-2"
   },
   "devDependencies": {
     "@kiltprotocol/types": "^0.28.2",
