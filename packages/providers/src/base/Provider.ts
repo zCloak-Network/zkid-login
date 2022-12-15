@@ -7,14 +7,14 @@ import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { Request, RequestRpcs } from '@zcloak/login-rpc';
 import type { SignKeys } from '@zcloak/login-rpc/types';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
+import type { ProviderEvents } from '../types';
 
 import { isHex, isString, isU8a, numberToHex, stringToHex, u8aToHex } from '@polkadot/util';
-
-import { Events } from './Events';
+import Events from 'eventemitter3';
 
 type HexString = `0x${string}`;
 
-export class BaseProvider extends Events {
+export class BaseProvider extends Events<ProviderEvents> {
   protected request: Request;
 
   constructor(request: Request) {
@@ -124,34 +124,32 @@ export class BaseProvider extends Events {
 
   public encrypt(
     data: HexString | Uint8Array | string | number,
-    peer: Uint8Array | HexString
+    receiver: DidUrl
   ): Promise<RequestRpcs<'did_encrypt'>['did_encrypt'][1]> {
-    const payload: HexString = isHex(data)
+    const message: HexString = isHex(data)
       ? data
       : isU8a(data)
       ? u8aToHex(data)
       : isString(data)
       ? stringToHex(data)
       : numberToHex(data);
-    const peerPublicKey: HexString = isHex(peer) ? peer : u8aToHex(peer);
 
-    return this.request('did_encrypt', { payload, peerPublicKey });
+    return this.request('did_encrypt', { message, receiver });
   }
 
   public decrypt(
     data: HexString | Uint8Array | string | number,
-    peer: Uint8Array | HexString
+    sender: DidUrl
   ): Promise<HexString> {
-    const payload: HexString = isHex(data)
+    const message: HexString = isHex(data)
       ? data
       : isU8a(data)
       ? u8aToHex(data)
       : isString(data)
       ? stringToHex(data)
       : numberToHex(data);
-    const peerPublicKey: HexString = isHex(peer) ? peer : u8aToHex(peer);
 
-    return this.request('did_decrypt', { payload, peerPublicKey });
+    return this.request('did_decrypt', { message, sender });
   }
 
   public generateZkp(

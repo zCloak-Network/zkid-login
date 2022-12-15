@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@kiltprotocol/types": "^0.28.2",
-    "@zcloak/did-resolver": "^0.6.2-0",
-    "@zcloak/vc": "^0.6.2-0"
+    "@zcloak/did-resolver": "^0.6.2-1",
+    "@zcloak/vc": "^0.6.2-1"
   }
 }

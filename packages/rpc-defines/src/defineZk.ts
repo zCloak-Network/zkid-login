@@ -60,13 +60,13 @@ export type DidSignParams = {
 };
 
 export type DidEncryptParams = {
-  peerPublicKey: HexString;
-  payload: HexString;
+  receiver: DidUrl;
+  message: HexString;
 };
 
 export type DidDecryptParams = {
-  peerPublicKey: HexString;
-  payload: HexString;
+  sender: DidUrl;
+  message: HexString;
 };
 
 export type ZkpGenRequest = {
