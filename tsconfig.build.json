@@ -4,6 +4,7 @@
   },
   "files": [],
   "references": [
+    { "path": "./packages/did/tsconfig.build.json" },
     { "path": "./packages/providers/tsconfig.build.json" },
     { "path": "./packages/rpc/tsconfig.build.json" },
     { "path": "./packages/rpc-defines/tsconfig.build.json" },
