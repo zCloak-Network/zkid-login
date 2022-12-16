@@ -14,12 +14,12 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.3.2-2",
+  "version": "0.3.2-3",
   "main": "index.js",
   "dependencies": {
     "@polkadot/util": "^10.2.1",
     "@zcloak/did": "^0.6.2-1",
     "@zcloak/did-resolver": "^0.6.2-1",
-    "@zcloak/login-providers": "^0.3.2-2"
+    "@zcloak/login-providers": "^0.3.2-3"
   }
 }

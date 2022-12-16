@@ -14,12 +14,12 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.3.2-2",
+  "version": "0.3.2-3",
   "main": "index.js",
   "dependencies": {
     "@polkadot/util": "^10.2.1",
-    "@zcloak/login-rpc": "0.3.2-2",
-    "@zcloak/login-rpc-defines": "0.3.2-2",
+    "@zcloak/login-rpc": "0.3.2-3",
+    "@zcloak/login-rpc-defines": "0.3.2-3",
     "eventemitter3": "^5.0.0"
   },
   "devDependencies": {

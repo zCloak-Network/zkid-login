@@ -3728,35 +3728,35 @@ __metadata:
     "@polkadot/util": ^10.2.1
     "@zcloak/did": ^0.6.2-1
     "@zcloak/did-resolver": ^0.6.2-1
-    "@zcloak/login-providers": ^0.3.2-2
+    "@zcloak/login-providers": ^0.3.2-3
   languageName: unknown
   linkType: soft
 
-"@zcloak/login-providers@^0.3.2-2, @zcloak/login-providers@workspace:packages/providers":
+"@zcloak/login-providers@^0.3.2-3, @zcloak/login-providers@workspace:packages/providers":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-providers@workspace:packages/providers"
   dependencies:
     "@polkadot/util": ^10.2.1
     "@zcloak/did-resolver": ^0.6.2-1
-    "@zcloak/login-rpc": 0.3.2-2
-    "@zcloak/login-rpc-defines": 0.3.2-2
+    "@zcloak/login-rpc": 0.3.2-3
+    "@zcloak/login-rpc-defines": 0.3.2-3
     "@zcloak/vc": ^0.6.2-1
     eventemitter3: ^5.0.0
   languageName: unknown
   linkType: soft
 
-"@zcloak/login-rpc-defines@0.3.2-2, @zcloak/login-rpc-defines@workspace:packages/rpc-defines":
+"@zcloak/login-rpc-defines@0.3.2-3, @zcloak/login-rpc-defines@workspace:packages/rpc-defines":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc-defines@workspace:packages/rpc-defines"
   dependencies:
     "@kiltprotocol/types": ^0.28.2
     "@zcloak/did-resolver": ^0.6.2-1
-    "@zcloak/login-rpc": ^0.3.2-2
+    "@zcloak/login-rpc": ^0.3.2-3
     "@zcloak/vc": ^0.6.2-1
   languageName: unknown
   linkType: soft
 
-"@zcloak/login-rpc@0.3.2-2, @zcloak/login-rpc@^0.3.2-2, @zcloak/login-rpc@workspace:packages/rpc":
+"@zcloak/login-rpc@0.3.2-3, @zcloak/login-rpc@^0.3.2-3, @zcloak/login-rpc@workspace:packages/rpc":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc@workspace:packages/rpc"
   languageName: unknown
@@ -3772,8 +3772,8 @@ __metadata:
     "@polkadot/util": ^10.2.1
     "@zcloak/did": ^0.6.2-1
     "@zcloak/did-resolver": ^0.6.2-1
-    "@zcloak/login-rpc": 0.3.2-2
-    "@zcloak/login-rpc-defines": 0.3.2-2
+    "@zcloak/login-rpc": 0.3.2-3
+    "@zcloak/login-rpc-defines": 0.3.2-3
     "@zcloak/vc": ^0.6.2-1
     "@zcloak/verify": ^0.6.2-1
   languageName: unknown
