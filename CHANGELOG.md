@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [0.4.0](https://github.com/zCloak-Network/zkid-login/compare/v0.3.1...v0.4.0) (2022-12-21)
+
+
+### Features
+
+* improve rpc method ([#10](https://github.com/zCloak-Network/zkid-login/issues/10)) ([c0baa58](https://github.com/zCloak-Network/zkid-login/commit/c0baa58f43045ffa2aa9a5e7f709eccb43e96a98))
+* **login-did:** Add LoginDid class, it extends Did class from @zcloak/did package, and rewrites the methods: sign, encrypt, decrypt. ([#11](https://github.com/zCloak-Network/zkid-login/issues/11)) ([20fec34](https://github.com/zCloak-Network/zkid-login/commit/20fec346bb5c53b0519608ee2c92147560ed4147))
+* **rpc-defines:** change encrypt and decrypt params ([eacdc52](https://github.com/zCloak-Network/zkid-login/commit/eacdc524b71bd393cccf6767596ea9e5f6a577c6))
+
+
 ## [0.3.1](https://github.com/zCloak-Network/zkid-login/compare/v0.3.0...v0.3.1) (2022-12-11)
 
 

@@ -14,7 +14,7 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.3.2-3",
+  "version": "0.4.0",
   "main": "index.js",
   "dependencies": {
     "@kiltprotocol/core": "^0.28.2",
@@ -23,8 +23,8 @@
     "@polkadot/util": "^10.2.1",
     "@zcloak/did": "^0.7.0",
     "@zcloak/did-resolver": "^0.7.0",
-    "@zcloak/login-rpc": "0.3.2-3",
-    "@zcloak/login-rpc-defines": "0.3.2-3",
+    "@zcloak/login-rpc": "0.4.0",
+    "@zcloak/login-rpc-defines": "0.4.0",
     "@zcloak/vc": "^0.7.0",
     "@zcloak/verify": "^0.7.0"
   }
