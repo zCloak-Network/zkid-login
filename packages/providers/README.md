@@ -50,7 +50,7 @@ provider.on('unlock', (did) => {
 })
 ```
 
-## Function by BaseProvider
+## Method by BaseProvider
 
 Send an auth request to wallet.
 ```typescript
@@ -81,19 +81,19 @@ const credential = await provider.requestCredentialContent(...args);
 Login with did
 
 ```typescript
-const signature = await provider.didLogin(...args);
+const signature = await provider.didLogin('0x...');
 ```
 
 Sign data use current selected did.
 
 ```typescript
-const signature = await provider.sign(...args);
+const signature = await provider.sign('0x...');
 ```
 
 Encrypt and decrypt data for peer.
 
 ```typescript
-const encrypted = await provider.encrypt('0x...', peer);
+const encrypted = await provider.encrypt('0x...', receiver);
 
-const decrypted = await provider.decrypt(encrypted, peer);
+const decrypted = await provider.decrypt('0x...', sender);
 ```

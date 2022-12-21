@@ -23,7 +23,7 @@
     "eventemitter3": "^5.0.0"
   },
   "devDependencies": {
-    "@zcloak/did-resolver": "^0.6.2-1",
-    "@zcloak/vc": "^0.6.2-1"
+    "@zcloak/did-resolver": "^0.7.0",
+    "@zcloak/vc": "^0.7.0"
   }
 }
