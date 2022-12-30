@@ -33,10 +33,18 @@ export class BaseProvider extends Events<ProviderEvents> {
    * Send request for auth and request did login.
    * @returns `Promise<boolean>`
    */
-  public requestAuthAndLogin(): Promise<
-    RequestRpcs<'wallet_requestAuthAndLogin'>['wallet_requestAuthAndLogin'][1]
-  > {
-    return this.request('wallet_requestAuthAndLogin', undefined);
+  public requestAuthAndLogin(
+    data: HexString | Uint8Array | string | number
+  ): Promise<RequestRpcs<'wallet_requestAuthAndLogin'>['wallet_requestAuthAndLogin'][1]> {
+    const payload: HexString = isHex(data)
+      ? data
+      : isU8a(data)
+      ? u8aToHex(data)
+      : isString(data)
+      ? stringToHex(data)
+      : numberToHex(data);
+
+    return this.request('wallet_requestAuthAndLogin', { payload });
   }
 
   /**

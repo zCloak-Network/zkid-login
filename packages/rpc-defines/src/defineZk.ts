@@ -79,7 +79,7 @@ export type ZkpGenRequest = {
 declare module '@zcloak/login-rpc/types' {
   interface RpcRequests {
     wallet_requestAuth: undefined;
-    wallet_requestAuthAndLogin: undefined;
+    wallet_requestAuthAndLogin: DidLoginParams;
     wallet_isAuth: undefined;
     wallet_isLocked: undefined;
     did_getCurrent: undefined;
