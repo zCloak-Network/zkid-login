@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [0.5.0](https://github.com/zCloak-Network/zkid-login/compare/v0.4.0...v0.5.0) (2023-01-05)
+
+
+### Features
+
+* add authAndLogin param ([#12](https://github.com/zCloak-Network/zkid-login/issues/12)) ([c0862e9](https://github.com/zCloak-Network/zkid-login/commit/c0862e9cddda95ab26b2ac365c7052f5e9be97df))
+* add more type for rpcs ([74f5c80](https://github.com/zCloak-Network/zkid-login/commit/74f5c80800d1486a37c8265078726afbd5bc9ab0))
+
+
 ## [0.4.0](https://github.com/zCloak-Network/zkid-login/compare/v0.3.1...v0.4.0) (2022-12-21)
 
 
