@@ -3,7 +3,7 @@
 
 import type { DidResourceUri, DidUri } from '@kiltprotocol/types';
 import type { DidUrl } from '@zcloak/did-resolver/types';
-import type { RequestRpcs } from '@zcloak/login-rpc';
+import type { RpcResponse } from '@zcloak/login-rpc';
 import type { DidSignature as DidSignatureKilt } from '@zcloak/login-rpc-defines/defineKilt';
 import type { DidSignature as DidSignatureZk } from '@zcloak/login-rpc-defines/defineZk';
 
@@ -27,7 +27,7 @@ type HexString = `0x${string}`;
  */
 export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 'did_login'>(
   message: HexString | Uint8Array | string,
-  data: RequestRpcs<T>[T][1],
+  data: RpcResponse<T>,
   resolver?: DidResolver
 ): Promise<boolean> {
   let keyUri: DidUri | DidUrl;

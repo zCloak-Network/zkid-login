@@ -3,7 +3,7 @@
 
 import type { DidResolver } from '@zcloak/did-resolver';
 import type { DidUrl } from '@zcloak/did-resolver/types';
-import type { RequestRpcs } from '@zcloak/login-rpc';
+import type { RpcResponse } from '@zcloak/login-rpc';
 
 import { Attestation } from '@kiltprotocol/core';
 import { Utils, verifyDidSignature } from '@kiltprotocol/did';
@@ -29,7 +29,7 @@ export async function verifyCredentialDigest<
     | 'did_requestCredentialDigest'
     | 'did_requestCredentialDigest$Kilt' = 'did_requestCredentialDigest'
 >(
-  credentialDigest: RequestRpcs<T>[T][1],
+  credentialDigest: RpcResponse<T>,
   challenge: string,
   owner: T extends 'did_requestCredentialDigest' ? DidUrl : DidUri,
   resolver?: DidResolver

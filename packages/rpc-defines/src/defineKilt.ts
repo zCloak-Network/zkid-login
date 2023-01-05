@@ -1,7 +1,7 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import '@zcloak/login-rpc/types';
+import '@zcloak/login-rpc/rpcs';
 
 import type { DidUri, ICredential } from '@kiltprotocol/types';
 
@@ -77,34 +77,19 @@ export type ZkpGenRequest = {
   program: string;
 };
 
-declare module '@zcloak/login-rpc/types' {
-  interface RpcRequests {
-    wallet_requestAuth$Kilt: undefined;
-    wallet_requestAuthAndLogin$Kilt: undefined;
-    wallet_isAuth$Kilt: undefined;
-    wallet_isLocked$Kilt: boolean;
-    did_getCurrent$Kilt: undefined;
-    did_requestCredentialDigest$Kilt: RequestCredentialDigestParams;
-    did_requestCredentialContent$Kilt: RequestCredentialContentParams;
-    did_login$Kilt: DidLoginParams;
-    did_sign$Kilt: DidSignParams;
-    did_encrypt$Kilt: DidEncryptParams;
-    did_decrypt$Kilt: DidDecryptParams;
-    proof_generate$Kilt: ZkpGenResponse;
-  }
-
-  interface RpcResponses {
-    wallet_requestAuth$Kilt: boolean;
-    wallet_requestAuthAndLogin$Kilt: DidSignature;
-    wallet_isAuth$Kilt: boolean;
-    wallet_isLocked$Kilt: boolean;
-    did_getCurrent$Kilt: DidInfo;
-    did_requestCredentialDigest$Kilt: CredentialDigest;
-    did_requestCredentialContent$Kilt: ICredential;
-    did_login$Kilt: DidSignature;
-    did_sign$Kilt: DidSignature;
-    did_encrypt$Kilt: Uint8Array;
-    did_decrypt$Kilt: Uint8Array;
-    proof_generate$Kilt: ZkpGenResponse;
+declare module '@zcloak/login-rpc/rpcs' {
+  interface Rpcs {
+    wallet_requestAuth$Kilt: [undefined, boolean];
+    wallet_requestAuthAndLogin$Kilt: [undefined, DidSignature];
+    wallet_isAuth$Kilt: [undefined, boolean];
+    wallet_isLocked$Kilt: [boolean, boolean];
+    did_getCurrent$Kilt: [undefined, DidInfo];
+    did_requestCredentialDigest$Kilt: [RequestCredentialDigestParams, CredentialDigest];
+    did_requestCredentialContent$Kilt: [RequestCredentialContentParams, ICredential];
+    did_login$Kilt: [DidLoginParams, DidSignature];
+    did_sign$Kilt: [DidSignParams, DidSignature];
+    did_encrypt$Kilt: [DidEncryptParams, Uint8Array];
+    did_decrypt$Kilt: [DidDecryptParams, Uint8Array];
+    proof_generate$Kilt: [ZkpGenResponse, ZkpGenResponse];
   }
 }

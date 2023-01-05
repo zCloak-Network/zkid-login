@@ -5,13 +5,9 @@ import type { Request } from '@zcloak/login-rpc';
 
 import { BaseProvider } from './base/Provider';
 
-declare module '@zcloak/login-rpc/types' {
-  interface RpcRequests {
-    credential_import: { credential: HexString };
-  }
-
-  interface RpcResponses {
-    credential_import: undefined;
+declare module '@zcloak/login-rpc/rpcs' {
+  interface Rpcs {
+    credential_import: [{ credential: HexString }, undefined];
   }
 }
 

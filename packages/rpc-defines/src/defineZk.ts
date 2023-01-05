@@ -1,7 +1,7 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import '@zcloak/login-rpc/types';
+import '@zcloak/login-rpc/rpcs';
 
 import type { DidDocument, DidUrl, VerificationMethodType } from '@zcloak/did-resolver/types';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
@@ -76,34 +76,19 @@ export type ZkpGenRequest = {
   program: string;
 };
 
-declare module '@zcloak/login-rpc/types' {
-  interface RpcRequests {
-    wallet_requestAuth: undefined;
-    wallet_requestAuthAndLogin: DidLoginParams;
-    wallet_isAuth: undefined;
-    wallet_isLocked: undefined;
-    did_getCurrent: undefined;
-    did_requestCredentialDigest: RequestCredentialDigestParams;
-    did_requestCredentialContent: RequestCredentialContentParams;
-    did_login: DidLoginParams;
-    did_sign: DidSignParams;
-    did_encrypt: DidEncryptParams;
-    did_decrypt: DidDecryptParams;
-    proof_generate: ZkpGenRequest;
-  }
-
-  interface RpcResponses {
-    wallet_requestAuth: boolean;
-    wallet_requestAuthAndLogin: DidSignature;
-    wallet_isAuth: boolean;
-    wallet_isLocked: boolean;
-    did_getCurrent: DidInfo;
-    did_requestCredentialDigest: VerifiablePresentation;
-    did_requestCredentialContent: VerifiablePresentation;
-    did_login: DidSignature;
-    did_sign: DidSignature;
-    did_encrypt: DidEncrypted;
-    did_decrypt: HexString;
-    proof_generate: ZkpGenResponse;
+declare module '@zcloak/login-rpc/rpcs' {
+  interface Rpcs {
+    wallet_requestAuth: [undefined, boolean];
+    wallet_requestAuthAndLogin: [DidLoginParams, DidSignature];
+    wallet_isAuth: [undefined, boolean];
+    wallet_isLocked: [undefined, boolean];
+    did_getCurrent: [undefined, DidInfo];
+    did_requestCredentialDigest: [RequestCredentialDigestParams, VerifiablePresentation];
+    did_requestCredentialContent: [RequestCredentialContentParams, VerifiablePresentation];
+    did_login: [DidLoginParams, DidSignature];
+    did_sign: [DidSignParams, DidSignature];
+    did_encrypt: [DidEncryptParams, DidEncrypted];
+    did_decrypt: [DidDecryptParams, HexString];
+    proof_generate: [ZkpGenRequest, ZkpGenResponse];
   }
 }

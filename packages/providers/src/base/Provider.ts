@@ -4,7 +4,7 @@
 import '@zcloak/login-rpc-defines/defineZk';
 
 import type { DidUrl } from '@zcloak/did-resolver/types';
-import type { Request, RequestRpcs } from '@zcloak/login-rpc';
+import type { Request, RpcRequest, RpcResponse } from '@zcloak/login-rpc';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
 import type { ProviderEvents } from '../types';
 
@@ -35,7 +35,7 @@ export class BaseProvider extends Events<ProviderEvents> {
    */
   public requestAuthAndLogin(
     data: HexString | Uint8Array | string | number
-  ): Promise<RequestRpcs<'wallet_requestAuthAndLogin'>['wallet_requestAuthAndLogin'][1]> {
+  ): Promise<RpcResponse<'wallet_requestAuthAndLogin'>> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -67,7 +67,7 @@ export class BaseProvider extends Events<ProviderEvents> {
    * Get current selected in wallet.
    * @returns `DidInfo` object.
    */
-  public getCurrentDid(): Promise<RequestRpcs<'did_getCurrent'>['did_getCurrent'][1]> {
+  public getCurrentDid(): Promise<RpcResponse<'did_getCurrent'>> {
     return this.request('did_getCurrent', undefined);
   }
 
@@ -102,7 +102,7 @@ export class BaseProvider extends Events<ProviderEvents> {
 
   public didLogin(
     data: HexString | Uint8Array | string | number
-  ): Promise<RequestRpcs<'did_login'>['did_login'][1]> {
+  ): Promise<RpcResponse<'did_login'>> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -117,7 +117,7 @@ export class BaseProvider extends Events<ProviderEvents> {
   public sign(
     data: HexString | Uint8Array | string | number,
     keyId?: DidUrl
-  ): Promise<RequestRpcs<'did_sign'>['did_sign'][1]> {
+  ): Promise<RpcResponse<'did_sign'>> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -132,7 +132,7 @@ export class BaseProvider extends Events<ProviderEvents> {
   public encrypt(
     data: HexString | Uint8Array | string | number,
     receiver: DidUrl
-  ): Promise<RequestRpcs<'did_encrypt'>['did_encrypt'][1]> {
+  ): Promise<RpcResponse<'did_encrypt'>> {
     const message: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -159,9 +159,7 @@ export class BaseProvider extends Events<ProviderEvents> {
     return this.request('did_decrypt', { message, sender });
   }
 
-  public generateZkp(
-    params: RequestRpcs<'proof_generate'>['proof_generate'][0]
-  ): Promise<RequestRpcs<'proof_generate'>['proof_generate'][1]> {
+  public generateZkp(params: RpcRequest<'proof_generate'>): Promise<RpcResponse<'proof_generate'>> {
     return this.request('proof_generate', params);
   }
 }

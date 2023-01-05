@@ -1,9 +1,11 @@
 // Copyright 2021-2022 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { RpcRequests, RpcResponses } from './types';
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Rpcs {}
 
-// [RpcRequestMethod]: [Params, Returns]
-export type RequestRpcs<T extends keyof RpcRequests> = Record<T, [RpcRequests[T], RpcResponses[T]]>;
+export type RpcMethods = keyof Rpcs;
 
-export type RequestMethods = keyof RequestRpcs<keyof RpcRequests>;
+export type RpcRequest<Method extends RpcMethods> = Rpcs[Method][0];
+
+export type RpcResponse<Method extends RpcMethods> = Rpcs[Method][1];

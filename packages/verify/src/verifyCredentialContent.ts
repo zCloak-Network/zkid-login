@@ -4,7 +4,7 @@
 import type { DidUri } from '@kiltprotocol/types';
 import type { DidResolver } from '@zcloak/did-resolver';
 import type { DidUrl } from '@zcloak/did-resolver/types';
-import type { RequestRpcs } from '@zcloak/login-rpc';
+import type { RpcResponse } from '@zcloak/login-rpc';
 
 import { Credential } from '@kiltprotocol/core';
 import { Utils } from '@kiltprotocol/did';
@@ -29,7 +29,7 @@ export async function verifyCredentialContent<
     | 'did_requestCredentialContent'
     | 'did_requestCredentialContent$Kilt' = 'did_requestCredentialContent'
 >(
-  credential: RequestRpcs<T>[T][1],
+  credential: RpcResponse<T>,
   challenge: string,
   owner: T extends 'did_requestCredentialContent' ? DidUrl : DidUri,
   resolver?: DidResolver
