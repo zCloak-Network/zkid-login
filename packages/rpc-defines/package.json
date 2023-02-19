@@ -17,11 +17,11 @@
   "version": "0.5.0",
   "main": "index.js",
   "dependencies": {
-    "@zcloak/login-rpc": "^0.5.0"
+    "@zcloak/login-rpc": "workspace:^"
   },
   "devDependencies": {
     "@kiltprotocol/types": "^0.28.2",
-    "@zcloak/did-resolver": "^0.7.0",
-    "@zcloak/vc": "^0.7.0"
+    "@zcloak/did-resolver": "^1.0.0",
+    "@zcloak/vc": "^1.0.0"
   }
 }

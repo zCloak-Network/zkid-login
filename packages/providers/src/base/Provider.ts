@@ -1,8 +1,10 @@
-// Copyright 2021-2022 zcloak authors & contributors
+// Copyright 2021-2023 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import '@zcloak/login-rpc-defines/defineZk';
 
+import type { TypedData } from '@zcloak/crypto/eip712/types';
+import type { DidKeys } from '@zcloak/did/types';
 import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { Request, RpcRequest, RpcResponse } from '@zcloak/login-rpc';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
@@ -115,16 +117,16 @@ export class BaseProvider extends Events<ProviderEvents> {
   }
 
   public sign(
-    data: HexString | Uint8Array | string | number,
-    keyId?: DidUrl
+    data: HexString | Uint8Array | string | TypedData,
+    keyId?: DidUrl | Exclude<DidKeys, 'keyAgreement'>
   ): Promise<RpcResponse<'did_sign'>> {
-    const payload: HexString = isHex(data)
+    const payload = isHex(data)
       ? data
       : isU8a(data)
       ? u8aToHex(data)
       : isString(data)
       ? stringToHex(data)
-      : numberToHex(data);
+      : data;
 
     return this.request('did_sign', { payload, keyId });
   }

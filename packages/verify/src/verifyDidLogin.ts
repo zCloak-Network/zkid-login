@@ -1,4 +1,4 @@
-// Copyright 2021-2022 zcloak authors & contributors
+// Copyright 2021-2023 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { DidResourceUri, DidUri } from '@kiltprotocol/types';
@@ -11,6 +11,7 @@ import { verifyDidSignature } from '@kiltprotocol/did';
 import { KeyRelationship } from '@kiltprotocol/types';
 import { u8aToU8a } from '@polkadot/util';
 
+import { eip712 } from '@zcloak/crypto';
 import { isDidUrl } from '@zcloak/did/utils';
 import { DidResolver } from '@zcloak/did-resolver';
 import { didVerify } from '@zcloak/verify';
@@ -42,7 +43,33 @@ export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 
   }
 
   if (isDidUrl(keyUri)) {
-    return didVerify(message, u8aToU8a(signature), keyUri, resolver);
+    const type = (data as DidSignatureZk).type;
+
+    const msgHash =
+      type === 'EcdsaSecp256k1SignatureEip712'
+        ? eip712.getMessage(
+            {
+              types: {
+                EIP712Domain: [
+                  { name: 'name', type: 'string' },
+                  { name: 'version', type: 'string' }
+                ],
+                DidLogin: [{ name: 'challenge', type: 'bytes' }]
+              },
+              primaryType: 'DidLogin',
+              domain: {
+                name: 'DidLogin',
+                version: '0'
+              },
+              message: {
+                challenge: message
+              }
+            },
+            true
+          )
+        : message;
+
+    return didVerify(msgHash, u8aToU8a(signature), type, keyUri, resolver);
   }
 
   const result = await verifyDidSignature({
