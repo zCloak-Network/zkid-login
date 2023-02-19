@@ -17,9 +17,11 @@
   ],
   "scripts": {
     "build": "zcloak-dev-build-ts",
-    "build:release": "zcloak-ci-ghact-build",
+    "changeset": "zcloak-exec-changeset",
     "clean": "zcloak-dev-clean-build",
-    "lint": "zcloak-dev-run-lint && zcloak-dev-lint-dependencies",
+    "lint": "yarn lint:ts && yarn lint:dependencies",
+    "lint:ts": "zcloak-dev-run-lint",
+    "lint:dependencies": "zcloak-dev-lint-dependencies --fix",
     "postinstall": "zcloak-dev-yarn-only",
     "test": "echo \"test todo\"",
     "test:one": "zcloak-dev-run-test --detectOpenHandles --forceExit",
@@ -28,6 +30,6 @@
   "devDependencies": {
     "@types/jest": "^29.2.4",
     "@types/store": "^2.0.2",
-    "@zcloak/dev": "^0.12.0"
+    "@zcloak/dev": "^0.21.1"
   }
 }

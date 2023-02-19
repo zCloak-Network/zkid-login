@@ -1,4 +1,4 @@
-// Copyright 2021-2022 zcloak authors & contributors
+// Copyright 2021-2023 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { DidResolver } from '@zcloak/did-resolver';
@@ -11,7 +11,7 @@ import { type DidResourceUri, type DidUri, KeyRelationship } from '@kiltprotocol
 import { assert, u8aToU8a } from '@polkadot/util';
 
 import { isDidUrl, isSameUri } from '@zcloak/did/utils';
-import { isVP } from '@zcloak/vc/utils';
+import { isVP } from '@zcloak/vc/is';
 import { vpVerify } from '@zcloak/verify';
 
 /**

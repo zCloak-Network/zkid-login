@@ -20,12 +20,13 @@
     "@kiltprotocol/core": "^0.28.2",
     "@kiltprotocol/did": "^0.28.2",
     "@kiltprotocol/types": "^0.28.2",
-    "@polkadot/util": "^10.2.1",
-    "@zcloak/did": "^0.7.0",
-    "@zcloak/did-resolver": "^0.7.0",
-    "@zcloak/login-rpc": "0.5.0",
-    "@zcloak/login-rpc-defines": "0.5.0",
-    "@zcloak/vc": "^0.7.0",
-    "@zcloak/verify": "^0.7.0"
+    "@polkadot/util": "^10.3.1",
+    "@zcloak/crypto": "^1.0.0",
+    "@zcloak/did": "^1.0.0",
+    "@zcloak/did-resolver": "^1.0.0",
+    "@zcloak/login-rpc": "workspace:^",
+    "@zcloak/login-rpc-defines": "workspace:^",
+    "@zcloak/vc": "^1.0.0",
+    "@zcloak/verify": "^1.0.0"
   }
 }
