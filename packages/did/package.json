@@ -3,10 +3,13 @@
   "bugs": "https://github.com/zCloak-Network/zkid-login/issues",
   "contributors": [],
   "description": "zCloak login did",
-  "homepage": "https://github.com/zCloak-Network/zkid-login/tree/master/packages/did#readme",
+  "homepage": "https://github.com/zCloak-Network/zkid-login#readme",
   "license": "Apache-2.0",
   "maintainers": [],
   "name": "@zcloak/login-did",
+  "publishConfig": {
+    "directory": "build"
+  },
   "repository": {
     "directory": "packages/did",
     "type": "git",
