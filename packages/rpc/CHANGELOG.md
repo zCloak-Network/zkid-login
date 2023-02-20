@@ -1,5 +1,11 @@
 # @zcloak/login-rpc
 
+## 1.0.1
+
+### Patch Changes
+
+- [`35848c3`](https://github.com/zCloak-Network/zkid-login/commit/35848c34ae3ce34c6cd229947d72d3e463425bc9) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - fix publish directory
+
 ## 1.0.0
 
 ### Major Changes
