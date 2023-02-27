@@ -26,7 +26,7 @@
     "eventemitter3": "^5.0.0"
   },
   "devDependencies": {
-    "@zcloak/did-resolver": "^1.0.0",
-    "@zcloak/vc": "^1.0.0"
+    "@zcloak/did-resolver": "^1.1.0",
+    "@zcloak/vc": "^1.1.0"
   }
 }

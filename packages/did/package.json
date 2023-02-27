@@ -21,8 +21,8 @@
   "main": "index.js",
   "dependencies": {
     "@polkadot/util": "^10.3.1",
-    "@zcloak/did": "^1.0.0",
-    "@zcloak/did-resolver": "^1.0.0",
+    "@zcloak/did": "^1.1.0",
+    "@zcloak/did-resolver": "^1.1.0",
     "@zcloak/login-providers": "workspace:^"
   }
 }
