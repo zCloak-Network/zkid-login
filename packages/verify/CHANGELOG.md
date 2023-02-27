@@ -1,5 +1,18 @@
 # @zcloak/login-verify
 
+## 1.1.0
+
+### Minor Changes
+
+- [`3e8b5a1`](https://github.com/zCloak-Network/zkid-login/commit/3e8b5a177a45a7a121c704272467837aa25d950e) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - remove eip712 from verifyDidLogin
+
+### Patch Changes
+
+- [`f9f0277`](https://github.com/zCloak-Network/zkid-login/commit/f9f0277f1db17a3d9a05cb2b7c438c7e3836d3ba) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - upgrade zkid-sdk
+
+- Updated dependencies [[`f9f0277`](https://github.com/zCloak-Network/zkid-login/commit/f9f0277f1db17a3d9a05cb2b7c438c7e3836d3ba)]:
+  - @zcloak/login-rpc-defines@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

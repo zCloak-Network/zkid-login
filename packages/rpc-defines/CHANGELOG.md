@@ -1,5 +1,11 @@
 # @zcloak/login-rpc-defines
 
+## 1.0.2
+
+### Patch Changes
+
+- [`f9f0277`](https://github.com/zCloak-Network/zkid-login/commit/f9f0277f1db17a3d9a05cb2b7c438c7e3836d3ba) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - upgrade zkid-sdk
+
 ## 1.0.1
 
 ### Patch Changes
