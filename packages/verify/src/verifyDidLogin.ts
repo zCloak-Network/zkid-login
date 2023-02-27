@@ -11,7 +11,6 @@ import { verifyDidSignature } from '@kiltprotocol/did';
 import { KeyRelationship } from '@kiltprotocol/types';
 import { u8aToU8a } from '@polkadot/util';
 
-import { eip712 } from '@zcloak/crypto';
 import { isDidUrl } from '@zcloak/did/utils';
 import { DidResolver } from '@zcloak/did-resolver';
 import { didVerify } from '@zcloak/verify';
@@ -33,6 +32,7 @@ export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 
 ): Promise<boolean> {
   let keyUri: DidUri | DidUrl;
   const signature = data.signature;
+  const messageU8a = u8aToU8a(message);
 
   if ((data as DidSignatureZk).id) {
     keyUri = (data as DidSignatureZk).id;
@@ -45,35 +45,11 @@ export async function verifyDidLogin<T extends 'did_login' | 'did_login$Kilt' = 
   if (isDidUrl(keyUri)) {
     const type = (data as DidSignatureZk).type;
 
-    const msgHash =
-      type === 'EcdsaSecp256k1SignatureEip712'
-        ? eip712.getMessage(
-            {
-              types: {
-                EIP712Domain: [
-                  { name: 'name', type: 'string' },
-                  { name: 'version', type: 'string' }
-                ],
-                DidLogin: [{ name: 'challenge', type: 'bytes' }]
-              },
-              primaryType: 'DidLogin',
-              domain: {
-                name: 'DidLogin',
-                version: '0'
-              },
-              message: {
-                challenge: message
-              }
-            },
-            true
-          )
-        : message;
-
-    return didVerify(msgHash, u8aToU8a(signature), type, keyUri, resolver);
+    return didVerify(messageU8a, u8aToU8a(signature), type, keyUri, resolver);
   }
 
   const result = await verifyDidSignature({
-    message: u8aToU8a(message),
+    message: messageU8a,
     signature: {
       keyUri: keyUri as DidResourceUri,
       signature
