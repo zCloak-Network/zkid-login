@@ -1,5 +1,16 @@
 # @zcloak/login-did
 
+## 1.1.0
+
+### Minor Changes
+
+- [`62769bd`](https://github.com/zCloak-Network/zkid-login/commit/62769bda5ba38e679292e1a4037bd08b5875f2ba) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - remove typeddata sign param
+
+### Patch Changes
+
+- Updated dependencies [[`62769bd`](https://github.com/zCloak-Network/zkid-login/commit/62769bda5ba38e679292e1a4037bd08b5875f2ba)]:
+  - @zcloak/login-providers@1.1.0
+
 ## 1.0.3
 
 ### Patch Changes
