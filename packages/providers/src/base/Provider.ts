@@ -3,7 +3,6 @@
 
 import '@zcloak/login-rpc-defines/defineZk';
 
-import type { TypedData } from '@zcloak/crypto/eip712/types';
 import type { DidKeys } from '@zcloak/did/types';
 import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { Request, RpcRequest, RpcResponse } from '@zcloak/login-rpc';
@@ -117,7 +116,7 @@ export class BaseProvider extends Events<ProviderEvents> {
   }
 
   public sign(
-    data: HexString | Uint8Array | string | TypedData,
+    data: HexString | Uint8Array | string,
     keyId?: DidUrl | Exclude<DidKeys, 'keyAgreement'>
   ): Promise<RpcResponse<'did_sign'>> {
     const payload = isHex(data)

@@ -3,7 +3,6 @@
 
 import '@zcloak/login-rpc/rpcs';
 
-import type { TypedData } from '@zcloak/crypto/eip712/types';
 import type { DidKeys } from '@zcloak/did/types';
 import type {
   DidDocument,
@@ -64,7 +63,7 @@ export type DidLoginParams = {
 
 export type DidSignParams = {
   keyId?: DidUrl | Exclude<DidKeys, 'keyAgreement'>;
-  payload: HexString | TypedData;
+  payload: HexString;
 };
 
 export type DidEncryptParams = {

@@ -1,7 +1,6 @@
 // Copyright 2021-2023 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { TypedData } from '@zcloak/crypto/eip712/types';
 import type {
   DidKeys,
   EncryptedData,
@@ -80,7 +79,7 @@ export class LoginDid extends Did implements IDidKeyring {
   }
 
   public override async signWithKey(
-    message: Uint8Array | HexString | TypedData,
+    message: Uint8Array | HexString,
     keyOrDidUrl: DidUrl | Exclude<DidKeys, 'keyAgreement'>
   ): Promise<SignedData> {
     const { id, signature, type } = await this.provider.sign(message, keyOrDidUrl);
