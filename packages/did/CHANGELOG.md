@@ -1,5 +1,14 @@
 # @zcloak/login-did
 
+## 1.0.3
+
+### Patch Changes
+
+- [`a6867fe`](https://github.com/zCloak-Network/zkid-login/commit/a6867fe37f65d28ed71d9dab63b8b69774436ed7) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - upgrade zkid sdk
+
+- Updated dependencies [[`a6867fe`](https://github.com/zCloak-Network/zkid-login/commit/a6867fe37f65d28ed71d9dab63b8b69774436ed7)]:
+  - @zcloak/login-providers@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
