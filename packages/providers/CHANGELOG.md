@@ -1,5 +1,14 @@
 # @zcloak/login-providers
 
+## 1.1.1
+
+### Patch Changes
+
+- [`fbe5f2d`](https://github.com/zCloak-Network/zkid-login/commit/fbe5f2db28514d25db9bbe0b1ed0c7662d4d42f4) Thanks [@zzcwoshizz](https://github.com/zzcwoshizz)! - upgrade zkid-sdk
+
+- Updated dependencies [[`fbe5f2d`](https://github.com/zCloak-Network/zkid-login/commit/fbe5f2db28514d25db9bbe0b1ed0c7662d4d42f4)]:
+  - @zcloak/login-rpc-defines@1.1.1
+
 ## 1.1.0
 
 ### Minor Changes
