@@ -3,7 +3,7 @@
   "bugs": "https://github.com/zCloak-Network/zkid-login/issues",
   "homepage": "https://github.com/zCloak-Network/zkid-login#readme",
   "license": "Apache-2.0",
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@4.0.0-rc.40",
   "private": true,
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
   "devDependencies": {
     "@types/jest": "^29.2.4",
     "@types/store": "^2.0.2",
-    "@zcloak/dev": "^0.21.1"
+    "@zcloak/dev": "^0.26.0"
+  },
+  "resolutions": {
+    "typescript": "^5.0.1-rc"
   }
 }
