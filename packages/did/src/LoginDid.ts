@@ -1,13 +1,7 @@
 // Copyright 2021-2023 zcloak authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type {
-  DidKeys,
-  EncryptedData,
-  IDidDetails,
-  IDidKeyring,
-  SignedData
-} from '@zcloak/did/types';
+import type { DidKeys, EncryptedData, IDidDetails, IDidKeyring, SignedData } from '@zcloak/did/types';
 import type { DidUrl } from '@zcloak/did-resolver/types';
 import type { BaseProvider } from '@zcloak/login-providers/base/Provider';
 
@@ -52,14 +46,8 @@ export class LoginDid extends Did implements IDidKeyring {
     this.provider = provider;
   }
 
-  public override async encrypt(
-    message: Uint8Array | HexString,
-    receiverUrlIn: DidUrl
-  ): Promise<EncryptedData> {
-    const { data, receiverUrl, senderUrl, type } = await this.provider.encrypt(
-      message,
-      receiverUrlIn
-    );
+  public override async encrypt(message: Uint8Array | HexString, receiverUrlIn: DidUrl): Promise<EncryptedData> {
+    const { data, receiverUrl, senderUrl, type } = await this.provider.encrypt(message, receiverUrlIn);
 
     return {
       data: hexToU8a(data),

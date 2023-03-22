@@ -4,12 +4,7 @@
 import '@zcloak/login-rpc/rpcs';
 
 import type { DidKeys } from '@zcloak/did/types';
-import type {
-  DidDocument,
-  DidUrl,
-  SignatureType,
-  VerificationMethodType
-} from '@zcloak/did-resolver/types';
+import type { DidDocument, DidUrl, SignatureType, VerificationMethodType } from '@zcloak/did-resolver/types';
 import type { VerifiablePresentation } from '@zcloak/vc/types';
 
 export type HexString = `0x${string}`;

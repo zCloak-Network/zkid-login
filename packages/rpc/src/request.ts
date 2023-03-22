@@ -9,7 +9,5 @@ export type Unsub = () => void;
  * request rpc methods
  */
 export interface Request {
-  <Method extends RpcMethods>(method: Method, params: RpcRequest<Method>): Promise<
-    RpcResponse<Method>
-  >;
+  <Method extends RpcMethods>(method: Method, params: RpcRequest<Method>): Promise<RpcResponse<Method>>;
 }

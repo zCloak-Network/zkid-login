@@ -25,9 +25,7 @@ import { vpVerify } from '@zcloak/verify';
  * @returns `boolean` verify result
  */
 export async function verifyCredentialContent<
-  T extends
-    | 'did_requestCredentialContent'
-    | 'did_requestCredentialContent$Kilt' = 'did_requestCredentialContent'
+  T extends 'did_requestCredentialContent' | 'did_requestCredentialContent$Kilt' = 'did_requestCredentialContent'
 >(
   credential: RpcResponse<T>,
   challenge: string,

@@ -101,9 +101,7 @@ export class BaseProvider extends Events<ProviderEvents> {
     });
   }
 
-  public didLogin(
-    data: HexString | Uint8Array | string | number
-  ): Promise<RpcResponse<'did_login'>> {
+  public didLogin(data: HexString | Uint8Array | string | number): Promise<RpcResponse<'did_login'>> {
     const payload: HexString = isHex(data)
       ? data
       : isU8a(data)
@@ -119,13 +117,7 @@ export class BaseProvider extends Events<ProviderEvents> {
     data: HexString | Uint8Array | string,
     keyId?: DidUrl | Exclude<DidKeys, 'keyAgreement'>
   ): Promise<RpcResponse<'did_sign'>> {
-    const payload = isHex(data)
-      ? data
-      : isU8a(data)
-      ? u8aToHex(data)
-      : isString(data)
-      ? stringToHex(data)
-      : data;
+    const payload = isHex(data) ? data : isU8a(data) ? u8aToHex(data) : isString(data) ? stringToHex(data) : data;
 
     return this.request('did_sign', { payload, keyId });
   }
@@ -145,10 +137,7 @@ export class BaseProvider extends Events<ProviderEvents> {
     return this.request('did_encrypt', { message, receiver });
   }
 
-  public decrypt(
-    data: HexString | Uint8Array | string | number,
-    sender: DidUrl
-  ): Promise<HexString> {
+  public decrypt(data: HexString | Uint8Array | string | number, sender: DidUrl): Promise<HexString> {
     const message: HexString = isHex(data)
       ? data
       : isU8a(data)
