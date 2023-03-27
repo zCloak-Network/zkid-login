@@ -4002,6 +4002,8 @@ __metadata:
 "@zcloak/login-rpc@workspace:^, @zcloak/login-rpc@workspace:packages/rpc":
   version: 0.0.0-use.local
   resolution: "@zcloak/login-rpc@workspace:packages/rpc"
+  dependencies:
+    "@polkadot/util": "npm:^10.3.1"
   languageName: unknown
   linkType: soft
 

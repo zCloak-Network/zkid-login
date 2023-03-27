@@ -1,0 +1,12 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@zcloak/login-did": "1.1.1",
+    "@zcloak/login-providers": "1.1.1",
+    "@zcloak/login-rpc": "1.0.1",
+    "@zcloak/login-rpc-defines": "1.1.1",
+    "@zcloak/login-verify": "1.1.3"
+  },
+  "changesets": []
+}

@@ -92,4 +92,10 @@ declare module '@zcloak/login-rpc/rpcs' {
     did_decrypt: [DidDecryptParams, HexString];
     proof_generate: [ZkpGenRequest, ZkpGenResponse];
   }
+
+  interface RpcEvents {
+    zkID_Wallet_lock: any;
+    zkID_Wallet_unlock: any;
+    zkID_Wallet_didLoggedChanged: DidInfo;
+  }
 }
