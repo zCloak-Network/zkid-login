@@ -1,5 +1,13 @@
 # @zcloak/login-verify
 
+## 1.1.4-beta.0
+
+### Patch Changes
+
+- Updated dependencies [[`f042638`](https://github.com/zCloak-Network/zkid-login/commit/f04263887e700d1c29e19445fb6b44e028face9d)]:
+  - @zcloak/login-rpc-defines@1.2.0-beta.0
+  - @zcloak/login-rpc@1.1.0-beta.0
+
 ## 1.1.3
 
 ### Patch Changes

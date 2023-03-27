@@ -8,5 +8,7 @@
     "@zcloak/login-rpc-defines": "1.1.1",
     "@zcloak/login-verify": "1.1.3"
   },
-  "changesets": []
+  "changesets": [
+    "short-flowers-clean"
+  ]
 }
